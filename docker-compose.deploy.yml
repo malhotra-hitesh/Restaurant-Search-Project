@@ -2,7 +2,7 @@ version: '3'
 
 services:
   backend:
-    image: registry.gitlab.propulsion-home.ch/full-stack/batch-22-nov-2022/motion-backend/motion-backend-laura-yaiza-neha:master
+    image: registry.gitlab.propulsion-home.ch/full-stack/batch-22-nov-2022/luna-projects/luna_group2:master
     env_file:
       - ./envs/prod.env
     command: "sh /scripts/prod.sh"
