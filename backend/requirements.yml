@@ -1,4 +1,4 @@
-name: motion
+name: Luna_project
 dependencies:
   - python=3.10.8
   - psycopg2
