@@ -24,10 +24,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+uvh9f@2_5qf-wxwuv_h$d370jdowj0$7b#$l8gbl1m_p_p2c*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1", "http://localhost:3000", "https://luna-group2.propulsion-learn.ch/", "http://localhost:8000/"]
+
+# CORS_ALLOWED_ORIGINS = ["http://127.0.0.1", "http://localhost:3000", "https://luna-group2.propulsion-learn.ch/", "http://localhost:8000/"]
+
+# CORS_ALLOW_METHODS = [
+#     "DELETE",
+#     "GET",
+#     "OPTIONS",
+#     "PATCH",
+#     "POST",
+#     "PUT",
+# ]
 
 # Application definition
 
@@ -38,15 +50,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # third-part apps
+    # "corsheaders",
     'rest_framework',
-    'rest_framework.authtoken',
     'drf_yasg',
+    'rest_framework.authtoken',
 
     # own app
     'registration_profiles',
     'password_reset',
-    'Users'
-
+    'Users',
+    'restaurants'
 ]
 
 REST_FRAMEWORK = {
@@ -62,9 +77,10 @@ SIMPLE_JWT = {
 
 
 MIDDLEWARE = [
+    # "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -142,12 +158,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static-files/"
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static-files') if DEBUG else '/static-files/'
 # STATICFILES_DIRS =
 
 MEDIA_URL = "media-files/"
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media-files') if DEBUG else '/media-files/'
 
 # Default primary key field type
