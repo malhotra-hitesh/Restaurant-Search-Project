@@ -1,20 +1,23 @@
 import { Route, Routes } from 'react-router-dom';
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <>
+      
+     
 
-        <p>
-         Initial fronted you can start now working on
-        </p>
+      <p>
+        Initial fronted you can start now working on
+      </p>
 
        <Routes>
         {/*<Route path='/' element={< YourPage/>} />*/}
 
       </Routes>
-
-      </header>
-    </div>
+      
+    </>
   );
 }
 
