@@ -61,7 +61,8 @@ INSTALLED_APPS = [
     'registration_profiles',
     'password_reset',
     'Users',
-    'restaurants'
+    'restaurants',
+    'reviews'
 ]
 
 REST_FRAMEWORK = {
