@@ -54,7 +54,7 @@ class ListCategoryRestaurantView(ListAPIView):
 class ListUserRestaurantView(ListAPIView):
     """
     get:
-    Lists all Restaurants created by a specific user in chronological order.
+    Lists all Restaurants created by a specific user.
     """
 
     serializer_class = RestaurantSerializer
@@ -81,6 +81,7 @@ class RetrieveUpdateDeleteRestaurantView(RetrieveUpdateDestroyAPIView):
         Deletes a Restaurant by ID (only allowed to Restaurant owner or admin).
 
     """
+    http_method_names = ['get', 'patch', 'delete']
     lookup_field = 'id'
     lookup_url_kwarg = 'restaurant_id'
     queryset = Restaurant.objects.all()
