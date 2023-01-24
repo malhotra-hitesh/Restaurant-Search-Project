@@ -7,7 +7,7 @@ export const MainHeader = styled.header`
   Width: 1440px;
   Height: 71px;
   padding-inline: 2rem;
-  background-color: green;
+  background-color: #FFFFFF;
   position: relative;
   padding: 0 2.5rem;
   
@@ -19,15 +19,18 @@ export const MainHeader = styled.header`
     font-size: 36px;
     line-height: 42px;
     color: #000000;
-    // position: absolute;
-    // left: 2.08%;
-    // right: 87.92%;
-    // top: 18.57%;
-    // bottom: 22.27%;
     display: flex;
   }
   
 `;
+
+export const HeaderRight = styled.div`
+
+  display: flex;
+  align-items: center;
+ 
+`
+
 
 export const Navbar = styled.nav`
 
@@ -37,14 +40,11 @@ export const Navbar = styled.nav`
     justify-content: flex-start;
     align-items: center;
     gap: 50px;
-    border: 1px solid black;
     position: relative;
-    right: 370px;
+    right: 50px;
     
    
-    
-    
-  }
+    }
 
   a {
     text-decoration: none;
@@ -70,22 +70,41 @@ export const Navbar = styled.nav`
     
   }
 
-//   a:first-child {
-//     border: 2px solid orange;
-//     position: absolute;
-//     height: 23px;
-//     left: 23%;
-//     right: 23%;
-//     top: calc(50% - 23px/2 - 0.67px);
-// }
-
-//   a:last-child {
-//     position: absolute;
-//     height: 23px;
-//     left: 19%;
-//     right: 23%;
-//     top: calc(50% - 23px/2 - 0.67px);   
-// }
-
-
 `;
+
+export const RegNav = styled.div`
+
+  display: flex;
+  gap: 2px;
+
+  #signup {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  #login {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  } 
+
+  button {
+    display: flex;
+    width: 100px;
+    height: 40.57px;
+    border: none;
+    font-size: 16px;
+    background-color: #e47d31;
+    line-height: 18.75px;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  
+`
+
