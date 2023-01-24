@@ -1,17 +1,14 @@
+import {Routes, Route} from "react-router-dom";
+import Restaurants from "./pages/Restaurants";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-
-        <p>
-         Initial fronted you can start now working on the components
-        </p>
-
-
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <Routes>
+                <Route path="/restaurants" element={<Restaurants/>} />
+            </Routes>
+        </>
+    );
 }
 
 export default App;
