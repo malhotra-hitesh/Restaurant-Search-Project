@@ -9,9 +9,9 @@ RUN mkdir -p /backend
 
 COPY ./backend/requirements.yml /backend/requirements.yml
 RUN /opt/conda/bin/conda env create -f /backend/requirements.yml
-ENV PATH /opt/conda/envs/luna/bin:$PATH
+ENV PATH /opt/conda/envs/motion/bin:$PATH
 
-RUN echo "source activate luna" >~/.bashrc
+RUN echo "source activate motion" >~/.bashrc
 
 
 COPY ./scripts /scripts

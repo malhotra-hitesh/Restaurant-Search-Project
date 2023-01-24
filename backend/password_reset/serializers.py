@@ -7,9 +7,10 @@ from .models import PasswordReset
 def email_does_exist(email):
     try:
         User.objects.get(email=email)
-        raise ValidationError(detail='User does not exist!')
-    except User.DoesNotExist:
         return email
+    except User.DoesNotExist:
+        raise ValidationError(detail='User does not exist!')
+
 
 
 class PasswordResetSerializer(serializers.ModelSerializer):
@@ -26,3 +27,8 @@ class PasswordResetValidationSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(label='Registration E-Mail Address')
     password = serializers.CharField()
     password_repeat = serializers.CharField()
+
+    class Meta:
+        model = PasswordReset
+        fields = '__all__'
+        read_only_fields = ['code']

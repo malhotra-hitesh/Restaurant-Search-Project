@@ -30,16 +30,16 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1", "http://localhost:3000", "https://luna-group2.propulsion-learn.ch/", "http://localhost:8000/"]
 
-CORS_ALLOWED_ORIGINS = ["http://127.0.0.1", "http://localhost:3000", "https://luna-group2.propulsion-learn.ch/", "http://localhost:8000/"]
+# CORS_ALLOWED_ORIGINS = ["http://127.0.0.1", "http://localhost:3000", "https://luna-group2.propulsion-learn.ch/", "http://localhost:8000/"]
 
-CORS_ALLOW_METHODS = [
-    "DELETE",
-    "GET",
-    "OPTIONS",
-    "PATCH",
-    "POST",
-    "PUT",
-]
+# CORS_ALLOW_METHODS = [
+#     "DELETE",
+#     "GET",
+#     "OPTIONS",
+#     "PATCH",
+#     "POST",
+#     "PUT",
+# ]
 
 # Application definition
 
@@ -50,14 +50,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'drf_yasg',
 
     # third-part apps
-    "corsheaders",
+    # "corsheaders",
     'rest_framework',
     'drf_yasg',
+    'rest_framework.authtoken',
 
     # own app
     'registration_profiles',
@@ -79,7 +77,7 @@ SIMPLE_JWT = {
 
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
+    # "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

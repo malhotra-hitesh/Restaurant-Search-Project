@@ -1,4 +1,4 @@
-name: luna
+name: motion
 dependencies:
   - python=3.10.8
   - psycopg2=2.9.3
@@ -11,4 +11,4 @@ dependencies:
       - gunicorn==20.1.0
       - flake8==6.0.0
       - pillow==9.3.0
-      - django-cors-headers==3.13.0
+#      - django-cors-headers==3.13.0

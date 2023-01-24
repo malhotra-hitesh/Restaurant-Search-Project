@@ -28,7 +28,7 @@ class Restaurant(models.Model):
     website = models.TextField(blank=True, null=True)
     phone = models.IntegerField()
     opening_hours = models.TextField()
-    price = models.IntegerField(max_length=20, choices=PRICES, default=1)
+    price = models.IntegerField(choices=PRICES, default=1)
     image = models.ImageField(max_length=255, blank=True)
     email = models.EmailField(unique=True)
     owner = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
