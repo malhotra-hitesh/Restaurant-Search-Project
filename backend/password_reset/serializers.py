@@ -12,7 +12,6 @@ def email_does_exist(email):
         raise ValidationError(detail='User does not exist!')
 
 
-
 class PasswordResetSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(label='Registration E-Mail Address', validators=[email_does_exist])
 
