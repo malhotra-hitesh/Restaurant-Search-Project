@@ -113,7 +113,10 @@ class RetrieveUpdateDeleteReviewView(RetrieveUpdateDestroyAPIView):
 class ToggleReviewLikeView(GenericAPIView):
     """
     post:
-    toggle like/unlike a specific Review.
+    Like a specific Review.
+
+    delete:
+    Dislikes a specific Review.
     """
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
@@ -122,13 +125,10 @@ class ToggleReviewLikeView(GenericAPIView):
     def post(self, request, *args, **kwargs):
         review = Review.objects.get(id=kwargs.get('review_id'))
         if review.liked_by.filter(email=request.user.email).exists():
-            # review.liked_by.remove(request.user.id)
             return HttpResponse("User already likes this review", status=403)
         else:
             review.liked_by.add(request.user)
             return HttpResponse(status=204)
-
-
 
     def delete(self, request, *args, **kwargs):
         review = Review.objects.get(id=kwargs.get('review_id'))
@@ -136,7 +136,6 @@ class ToggleReviewLikeView(GenericAPIView):
             review.liked_by.remove(request.user.id)
             return HttpResponse(status=204)
         else:
-            # review.liked_by.add(request.user)
             return HttpResponse("User does not like this review", status=403)
 
 
