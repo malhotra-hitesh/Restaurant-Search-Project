@@ -1,6 +1,6 @@
 from django.db import models
-
 from luna import settings
+
 
 CATEGORIES = (
         ('Fast food', 'FAST_FOOD'),
@@ -16,6 +16,7 @@ PRICES = (
     (2, '$$'),
     (3, '$$$')
 )
+
 
 class Restaurant(models.Model):
     name = models.TextField()
