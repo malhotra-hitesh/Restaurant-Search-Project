@@ -7,7 +7,7 @@ def code_generator(length=5):
     return ''.join(random.choice(numbers) for _ in range(length))
 
 
-class RegistrationProfile(models.Model):
+class PasswordReset(models.Model):
     code = models.CharField(max_length=5, default=code_generator)
     email = models.EmailField(unique=True)
 

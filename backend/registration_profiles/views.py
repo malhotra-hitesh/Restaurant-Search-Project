@@ -1,11 +1,9 @@
 from django.core.mail import send_mail
-
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework import status
-
 from luna.settings import DEFAULT_FROM_EMAIL
-from users.models import User
+from Users.models import User
 from .models import RegistrationProfile
 from .models import code_generator
 from .serializers import RegistrationSerializer, ValidationSerializer
