@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,11 +8,8 @@ const Congratulations = () => {
     useEffect(() => {
     setTimeout(() => {
       navigate('/verification');
-    }, 300);
+    }, 30000);
   }, []);
-
-
-
 
     return (
         <>
