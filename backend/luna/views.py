@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
-from django.http import HttpResponse
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView, GenericAPIView
+from django.db.models import Q
+from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from Users.serializers import UserSerializer
@@ -21,7 +21,6 @@ class SearchView(ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_serializer_class(self):
-        query = self.request.GET.get('search', '')  # search is the params and '' the default value
         type = self.request.GET.get('type', '')
 
         if type == 'restaurants':
