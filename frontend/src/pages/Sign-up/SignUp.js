@@ -4,14 +4,13 @@ import { useSelector } from 'react-redux';
 import { setEmail } from '../../features/slice/authSlice';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { SignUpPage,SignUpRight, SignUpNav, SignUpForm } from "./SignUp.styled";
+import { SignUpPage, SignUpForm } from "./SignUp.styled";
 
 const SignUp = () => {
   const [newEmail, setNewEmail] = useState('');
   const [newWarning, setNewWarning] = useState('');
 
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth.data);
   const navigate = useNavigate();
 
   const handleChange = e => {

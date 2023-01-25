@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useSelector } from 'react-redux';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -15,9 +15,7 @@ const Verification = () => {
     });
     const [newWarning, setNewWarning] = useState('');
 
-    const auth = useSelector((state) => state.auth.data);
     const navigate = useNavigate();
-
     const handleChange = e => {
         const changed = {};
         changed[e.target.name] = e.target.value;
