@@ -4,15 +4,21 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import store from './store'
+import { GlobalStyles } from './styles/GlobalStyles.styles';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
+    <GlobalStyles />
+         <Provider store={store}> 
         <BrowserRouter>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </BrowserRouter>
-    </>
+         
+           <App />
+            </BrowserRouter>
+            </Provider>
+  </>
+   
+        
+   
 );
 

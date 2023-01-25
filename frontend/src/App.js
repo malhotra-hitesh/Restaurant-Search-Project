@@ -3,9 +3,8 @@ import SignUp from './pages/Sign-up/SignUp';
 import Congratulations from './pages/Congratulations/Congratulations';
 import Verification from './pages/Verification/Verification';
 import SignIn from './pages/Sign-in/SignIn';
-
-
-
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
   return (
