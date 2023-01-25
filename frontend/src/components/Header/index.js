@@ -1,8 +1,9 @@
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
 import { MainHeader, Navbar, HeaderRight, RegNav } from "./Header.styles";
 import LogoLuna from "../../assets/logo.svg"
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <>
       <MainHeader>
@@ -16,8 +17,8 @@ const Header = () => {
             </ul>
           </Navbar>
           <RegNav>
-            <button type="button" id="signup">SIGNUP</button>
-            <button type="button" id="login">LOGIN</button>
+            <button type="button" id="signup" onClick={() => navigate("../sign-up")}>SIGNUP</button>
+            <button type="button" id="login" onClick={() => navigate("../")}>LOGIN</button>
           </RegNav>
         </HeaderRight>
       </MainHeader>

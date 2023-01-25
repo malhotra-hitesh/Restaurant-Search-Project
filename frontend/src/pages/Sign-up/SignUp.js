@@ -26,7 +26,7 @@ const SignUp = () => {
     const data = {
       email: newEmail,
     };
-    axios.post("https://motion.propulsion-home.ch/backend/api/auth/registration/", data).then(res => {
+    axios.post("https://luna-group2.propulsion-learn.ch/backend/api/registration/", data).then(res => {
       console.log(res);
       dispatch(setEmail(newEmail));
       navigate("/Congratulations");
@@ -35,12 +35,6 @@ const SignUp = () => {
       setNewWarning(error.message);
     });
   }
-
-  useEffect(() => {
-    if (auth) {
-      navigate("/Feed");
-    }
-  });
 
   return (
     <>
