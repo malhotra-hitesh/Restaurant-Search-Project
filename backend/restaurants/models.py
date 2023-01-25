@@ -50,6 +50,5 @@ class Restaurant(models.Model):
     #         self.rating_average = sum / count
     #     super(Restaurant, self).save(*args, **kwargs)
 
-
     def __str__(self):
         return f'Restaurant {self.id}: {self.name}'
