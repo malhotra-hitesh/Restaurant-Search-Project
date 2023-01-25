@@ -21,6 +21,8 @@ from drf_yasg.views import get_schema_view
 from rest_framework_simplejwt import views as jwt_views
 from rest_framework import permissions
 
+from luna.views import SearchView, HomeView
+
 schema_view = get_schema_view(
     openapi.Info(
         title="Luna API",
@@ -46,5 +48,7 @@ urlpatterns = [
     path('backend/api/users/', include('Users.urls')),
     path('backend/api/restaurants/', include('restaurants.urls')),
     path('backend/api/reviews/', include('reviews.urls')),
+    path('backend/api/search/', SearchView.as_view()),
+    path('backend/api/home/', HomeView.as_view()),
     path('backend/api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]

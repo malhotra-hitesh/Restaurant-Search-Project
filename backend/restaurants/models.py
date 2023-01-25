@@ -1,6 +1,6 @@
 from django.db import models
 from luna import settings
-
+# from reviews.models import Review
 
 CATEGORIES = (
         ('Fast food', 'FAST_FOOD'),
@@ -32,6 +32,25 @@ class Restaurant(models.Model):
     image = models.ImageField(max_length=255, blank=True)
     email = models.EmailField(unique=True)
     owner = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+
+    # def compute_rating_average(self):
+    #     reviews = Review.objects.filter(restaurant=self.id)
+    #     sum = 0
+    #     count = 0
+    #     for review in reviews:
+    #         if review.rating == 0:
+    #             continue
+    #         else:
+    #             sum = sum + review.rating
+    #             count = count +1
+    #
+    #     if sum == 0:
+    #         return 'unkown'
+    #     else:
+    #         return sum / count
+    #
+    # rating_average = models.IntegerField(blank=True, default=compute_rating_average())
+    # rating_average = models.IntegerField(blank=True, default=0)
 
     def __str__(self):
         return f'Restaurant {self.id}: {self.name}'
