@@ -16,6 +16,5 @@ class User(AbstractUser):
     profile_picture = models.ImageField(verbose_name='profile picture', max_length=255, blank=True)
     things_I_love = models.CharField(verbose_name='things_I_love', max_length=200, blank=True, null=True)
 
-
     def __str__(self):
         return self.username
