@@ -41,7 +41,7 @@ class Restaurant(models.Model):
                 continue
             else:
                 sum = sum + review.rating
-                count = count +1
+                count = count + 1
 
         if sum == 0:
             return 'unkown'
