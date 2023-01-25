@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <>
       <MainHeader>
-        <img src={LogoLuna} />
+        <img alt="logo" src={LogoLuna} />
         <HeaderRight>
           <Navbar>
             <ul>

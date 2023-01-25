@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useDispatch } from "react-redux";
-import { useSelector } from 'react-redux';
 import { setEmail } from '../../features/slice/authSlice';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
