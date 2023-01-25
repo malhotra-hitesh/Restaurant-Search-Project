@@ -50,15 +50,15 @@ class SearchView(ListAPIView):
             return []
 
 
-class HomeView(ListAPIView):
-    """
-    get:
-    Get a list of the four best rated restaurants for the home screen.
-    """
-
-    serializer_class = RestaurantSerializer
-    permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-        queryset = Restaurant.objects.order_by('-rating_average')[:1]
-        return queryset
+# class HomeView(ListAPIView):
+#     """
+#     get:
+#     Get a list of the four best rated restaurants for the home screen.
+#     """
+#
+#     serializer_class = RestaurantSerializer
+#     permission_classes = [IsAuthenticated]
+#
+#     def get_queryset(self):
+#         queryset = Restaurant.objects.order_by('-rating_average')[:1]
+#         return queryset
