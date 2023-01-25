@@ -54,9 +54,8 @@ const SignUp = () => {
         <input name="email"  type="email" placeholder={'E-mail address'} value={newEmail} onChange={handleChange} />
         </span>
         <button type="submit">Register</button>
-        </form>
+      </form>
       </SignUpForm>
-      {/*</SignUpRight>*/}
     </SignUpPage>
 
     </>

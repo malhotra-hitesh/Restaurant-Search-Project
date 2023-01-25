@@ -1,18 +1,11 @@
 import styled from 'styled-components'
 
 export const SignUpPage = styled.div`
-width: 100vw;
-height: 100vh;
+width: 100%;
+height: 100%;
 display: flex;
+  justify-content: center;
 `
-// export const SignUpRight = styled.div`
-// width: 65%;
-// height: 100%;
-// display: flex;
-// flex-direction: column;
-// justify-content: center;
-// `
-
 
 export const SignUpForm = styled.div`
 height: 90%;
@@ -51,8 +44,10 @@ input {
   padding: 20px 0;
   display: flex;
   align-items: flex-end;
-  border: none;
+  border: 1px solid #EBEBEB;
+  border-radius: 3px;
   padding-left: 15px;
+  font-size: 20px;
 }
 
 input:focus {
@@ -84,5 +79,4 @@ button {
   cursor: pointer;
 
 }
-
 `

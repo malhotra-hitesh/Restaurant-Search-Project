@@ -4,10 +4,8 @@ import { useSelector } from 'react-redux';
 import { setAuth } from '../../features/slice/authSlice';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { SignInPage, SignInRight, SignInNav, SignInForm } from "./SignIn.styled"
-// import avatarSvg from "../../assets/svgs/avatar.svg"
-// import passwordSvg from "../../assets/svgs/password.svg"
-// import LogoLeft from "../../components/LogoLeft/LogoLeft";
+import { SignInPage, SignInForm } from "./SignIn.styled"
+
 
 const SignIn = () => {
   const [newEmail, setNewEmail] = useState('');
@@ -35,7 +33,6 @@ const SignIn = () => {
       password: newPassword,
     };
     axios.post("https://motion.propulsion-home.ch/backend/api/auth/token/", data).then(res => {
-      console.log(res);
       setNewWarning("");
       const authData = {
         email: newEmail,
@@ -57,7 +54,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if(auth) {
-      navigate("/Feed");
+      navigate("/restaurant");
       return;
     }
     const authData = {
@@ -75,13 +72,9 @@ const SignIn = () => {
   return (
     <>
     <SignInPage>
-      <SignInRight>
-      <SignInNav>
-        <p>Don't have an account?</p>
-        {!auth && <button onClick={() => navigate("/Sign-up")}>SIGN UP</button>}
-      </SignInNav>
       <SignInForm>
-      <h2>Sign In</h2>
+      <h2>Login</h2>
+        <hr></hr>
       <p>{newWarning}</p>
       {!auth && <form onSubmit={handleSubmit}>
         <span>
@@ -90,11 +83,10 @@ const SignIn = () => {
         <span>
         <input name="password" type="password" placeholder="Password" value={newPassword} onChange={handleChange}/>
         </span>
-        <button type="submit">sign in</button>
+        <button type="submit">Login</button>
 
       </form>}
       </SignInForm>
-      </SignInRight>
     </SignInPage>
     </>
   );

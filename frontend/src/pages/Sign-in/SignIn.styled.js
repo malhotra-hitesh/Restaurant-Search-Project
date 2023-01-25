@@ -1,46 +1,11 @@
 import styled from 'styled-components'
 
-export const SignInRight = styled.div`
-width: 65%;
-height: 100%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-`
-
-
 export const SignInPage = styled.div`
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
+   justify-content: center;
 `
-
-
-export const SignInNav = styled.nav`
-    height: 10%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 20px;
-
-    p {
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 15px;
-        color: #000;
-    }
-
-    button {
-        margin-right: 20px;
-        width: 130px;
-        height: 45px;
-        border-radius: 50px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        background-color: #fff;
-        text-transform: uppercase;
-        cursor: pointer;
-    }
-    `
 
 export const SignInForm = styled.div`
   height: 90%;
@@ -50,12 +15,20 @@ export const SignInForm = styled.div`
   align-items: center;
 
   h2 {
-    font-size: 2.5rem;
-    font-weight: 400;
+    font-size: 24px;
     text-align: center;
-    margin-bottom: 4.0625rem; 
+    color: #4C4C4C;
+    text-transform: uppercase;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
 
-
+  }
+   hr {
+    background: #E47D31;
+    height: 2px;
+    width: 100px;
   }
 
   form {
@@ -95,10 +68,9 @@ export const SignInForm = styled.div`
   button {
     width: 288px;
     height:60px;
-    background: linear-gradient(132.96deg, #c468ff 3.32%, #6e91f6 100%);
-    border-radius: 30px;
-    text-transform: uppercase;
-    font-size: 12px;
+    background:#E47D31;
+    border-radius: 28px;
+    font-size: 20px;
     color: white;
     border: none;
     padding: 15px 25px;

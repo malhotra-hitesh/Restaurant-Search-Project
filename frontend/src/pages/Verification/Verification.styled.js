@@ -2,23 +2,23 @@ import styled from "styled-components";
 
 
 export const VerificationPart = styled.div`
-width: 65%;
+width: 100%;
 height: 100%;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 
-h1 {
+h2 {
     height: 47px;
     font-style: normal;
-    font-size: 2.5rem;
-    font-weight: 400;
+    font-size: 24px;
     text-align: center;
-    margin-bottom: 4.0625rem; 
-    font-family: 'Roboto';
-    font-size: 40px;
-    line-height: 47px;
+    color: #4C4C4C;
+  font-family: 'Roboto';
+font-weight: 700;
+line-height: 28px;
+text-transform: uppercase;
 }
 
 form {
@@ -29,6 +29,11 @@ form {
     width: 600px;
     
 }
+    hr {
+    background: #E47D31;
+    height: 2px;
+    width: 100px;
+  }
 
 input {
     
@@ -47,15 +52,15 @@ input {
   button {
   width: 288px;
   height:60px;
-  background: linear-gradient(132.96deg, #c468ff 3.32%, #6e91f6 100%);
+  background: #E47D31;
   border-radius: 30px;
-  text-transform: uppercase;
-  font-size: 12px;
+  font-size: 20px;
   color: white;
   border: none;
   padding: 15px 25px;
   margin-top: 100px;
   cursor: pointer;
+    border-radius: 28px;
 
 }
 
@@ -71,8 +76,8 @@ input {
 
     `
     export const VerificationPage = styled.div`
- width: 100vw;
- height: 100vh;
+ width: 100%;
+ height: 100%;
  display: flex;
 `
 

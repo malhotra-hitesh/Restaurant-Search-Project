@@ -1,31 +1,29 @@
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-// import LogoLeft from "../../components/LogoLeft/LogoLeft";
-import { CongratulationsPage, CongratulationsRight,ConfirmationContainer } from './Congratulations.styled';
-// import GroupPng from "../../assets/images/Group.png"
 
-
+import { CongratulationsPage,ConfirmationContainer } from './Congratulations.styled';
 
 const Congratulations = () => {
-    const navigate = useNavigate();
-    const email = useSelector((state) => state.auth.email );
-    console.log(email);
+    const navigate = useNavigate()
+    useEffect(() => {
+    setTimeout(() => {
+      navigate('/verification');
+    }, 300);
+  }, []);
+
+
+
 
     return (
         <>
         <CongratulationsPage>
-         {/*<LogoLeft/>*/}
-          <CongratulationsRight>
             <ConfirmationContainer>
-            <h1>Congratulations!</h1>
-
-            {/*<img src = {GroupPng} />*/}
-
-            <p>We've have sent a confirmation code to your email {email}</p>
+            <h2>REGISTRATION</h2>
+                <hr></hr>
+            <p>Thanks for your registration.
+Our hard working monkeys are preparing a digital message called E-Mail that will be sent to you soon. Since monkeys arent good in writing the message could end up in you junk folder. Our apologies for any inconvienience.thank for </p>
             </ConfirmationContainer>
-            <button onClick={() => navigate("../Verification")}>CONTINUE</button>
-         </CongratulationsRight>
         </CongratulationsPage>
         </>
     )
