@@ -35,7 +35,7 @@ h2 {
     font-size: xx-large;
     font-weight: 600;
     margin: 0;
-    border-bottom: 5px solid #E47D31;;
+    border-bottom: 5px solid orange;
     padding: 2% 10px 10px;
 }
 
@@ -52,11 +52,13 @@ button {
     position: relative;
     top: 30px;
     left:120px;
-  }
+}
+
+
 
   form {
     position: relative;
-    top: 60px;
+    top: 20px;
   }
 
 `;
@@ -99,5 +101,23 @@ label {
         padding: 15px;
 }
 
+button {
+    width: 200px;
+    height: 40px;
+    background:#E47D31;
+    border-radius: 28px;
+    font-size: 12px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    right: 50px;
+    left: 50px;
+    bottom: 50px;
+   
+
+}
+
 `;
+
 

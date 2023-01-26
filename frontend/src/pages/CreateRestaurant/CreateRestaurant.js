@@ -1,13 +1,14 @@
 
-import { Page, CreateRestaurant, Fields, FormField, Line } from "./CreateRestaurant.styles";
+import { Page, CreateRestaurant, Fields, FormField, Line, } from "./CreateRestaurant.styles";
 import axios from 'axios';
 import React, { useState } from "react"
 import { useSelector } from "react-redux";
 
 const CreateRestaurantPage = () => {
-    const auth = useSelector((state) => state.auth);
+    const auth = useSelector((state) => state);
     console.log(auth);
-    
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc1MTcwNzI4LCJpYXQiOjE2NzQ3Mzg3MjgsImp0aSI6ImNmNGUyNmFkMzk1OTRmODY4NzA2NjZkMmMwYjNlZWM5IiwidXNlcl9pZCI6OX0.77LwspYW0Lf9G51dO2-kYBsR2LfWYJFHipIsoWxm1Fc'
+
     const [formData, setFormData] = useState({
         name: '',
         category: '',
@@ -28,7 +29,7 @@ const CreateRestaurantPage = () => {
     const config ={
         method: 'POST',
         headers: {
-            Authorization: `Bearer ${auth.access}`
+            Authorization: `Bearer ${token}`
         }
     };
 
@@ -117,10 +118,11 @@ const CreateRestaurantPage = () => {
                             </FormField>
                             <FormField>
                                 <label for=''>Image</label>
-                                
+                                <button type="button">CHOOSE A FILE...</button>
                             </FormField>
                         </Fields>
                     </Line>
+                    
                     <button type="submit">Create</button>
                 </form>
                 {/* <button type="submit">Create</button> */}
