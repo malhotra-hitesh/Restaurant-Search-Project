@@ -19,7 +19,7 @@ PRICES = (
 
 class Restaurant(models.Model):
     name = models.TextField()
-    category = models.CharField(max_length=20, choices=CATEGORIES, default='Casual dining')
+    category = models.IntegerField(choices=CATEGORIES, default=2)
     country = models.TextField()
     city = models.TextField()
     street = models.TextField()
