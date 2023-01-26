@@ -1,9 +1,10 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import homeHeader from "../../assets/home-header.png"
 import {Best_Rated_restaurants, HomeHeader, Main_container, Product_Container} from "./HomePage.styles";
 import {Restaurant_cart} from "../../components/Product/product.styles";
-import Product from "../../components/Product";
 import axios from "axios"
+import Restaurant from "../../components/Restaurant/Restaurant";
+import {SearchGlobaltyle, StyledButtons, StyledRestaurants} from "../Search/Search.styled";
 
 const HomePage = () => {
 
@@ -18,7 +19,6 @@ const HomePage = () => {
             console.log(error)
         }
     };
-
 
     useEffect(() => {
         fetchProducts();
@@ -45,23 +45,17 @@ const HomePage = () => {
                     <h1>BEST RATED RESTAURANTS</h1>
                     <div id="divider"></div>
                 </div>
-                 </Best_Rated_restaurants>
-            <Product_Container>
-                <Restaurant_cart>
-                    <div className="cart">{
-
-                        /*restaurant component will go here*/
-                       restaurants.map(restaurant => (
-                               <Product
-                                    key={restaurant.id}
-                                    name={restaurant.name}
-                               />
-                            )
+             </Best_Rated_restaurants>
+            <StyledRestaurants>
+                {restaurants.map(restaurant => (
+                           <Restaurant
+                                id={restaurant.id}
+                                restaurant={restaurant}
+                           />
                         )
-                    }
-                    </div>
-                    </Restaurant_cart>
-                </Product_Container>
+                    )
+                }
+                </StyledRestaurants>
         </Main_container>
     );
 };
