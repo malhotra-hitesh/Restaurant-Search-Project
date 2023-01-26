@@ -17,5 +17,5 @@ class UserSerializer(serializers.ModelSerializer):
                   'profile_picture',
                   'reviews',
                   'restaurants',
-                  'things_I_like'
+                  'things_I_love'
                   ]
