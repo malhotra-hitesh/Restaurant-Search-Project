@@ -5,9 +5,14 @@ import React, { useState } from "react"
 import { useSelector } from "react-redux";
 
 const CreateRestaurantPage = () => {
-    const auth = useSelector((state) => state);
-    console.log(auth);
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc1MTcwNzI4LCJpYXQiOjE2NzQ3Mzg3MjgsImp0aSI6ImNmNGUyNmFkMzk1OTRmODY4NzA2NjZkMmMwYjNlZWM5IiwidXNlcl9pZCI6OX0.77LwspYW0Lf9G51dO2-kYBsR2LfWYJFHipIsoWxm1Fc'
+    const access= localStorage.getItem("access");
+
+    const config = {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${access}`,
+        },
+    }
 
     const [formData, setFormData] = useState({
         name: '',
@@ -26,12 +31,6 @@ const CreateRestaurantPage = () => {
     const handleChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
-    const config ={
-        method: 'POST',
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    };
 
     const handleSubmit = event => {
         event.preventDefault();
