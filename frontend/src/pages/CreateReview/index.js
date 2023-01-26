@@ -33,7 +33,7 @@ const CreateReviewPage = () => {
 
     const handleSubmit=event=>{
         event.preventDefault();
-        axios.post('https://luna-group2.propulsion-learn.ch/backend/api/reviews/new/1/',formData,config)
+        axios.post('https://luna-group2.propulsion-learn.ch/backend/api/reviews/new/8/',formData,config)
             .then(response=>{
                 console.log(response);
             })
