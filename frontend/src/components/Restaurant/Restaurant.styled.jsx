@@ -11,6 +11,8 @@ export const StyledRestaurant = styled.div`
     color: #4C4C4C;
     border-top: #E47D31 solid 8px;
     background: #FFF;
+    width: 271px;
+    height: 410px;
 
   
   .stars-container {
@@ -24,6 +26,7 @@ export const StyledRestaurant = styled.div`
     
     .restaurant-pic {
         margin-right: 20vw;
+      //object-fit: cover;
     }
     
 `;
