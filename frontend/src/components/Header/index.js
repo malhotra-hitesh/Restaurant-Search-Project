@@ -17,8 +17,8 @@ const Header = () => {
             </ul>
           </Navbar>
           <RegNav>
-            <button type="button" id="signup" onClick={() => navigate("../sign-up")}>SIGNUP</button>
-            <button type="button" id="login" onClick={() => navigate("../sign-in")}>LOGIN</button>
+            <button type="button" id="signup" onClick={() => navigate("/sign-up")}>SIGNUP</button>
+            <button type="button" id="login" onClick={() => navigate("/sign-in")}>LOGIN</button>
           </RegNav>
         </HeaderRight>
       </MainHeader>

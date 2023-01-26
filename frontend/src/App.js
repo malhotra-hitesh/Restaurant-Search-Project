@@ -5,6 +5,7 @@ import Verification from './pages/Verification/Verification';
 import SignIn from './pages/Sign-in/SignIn';
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import CreateReview from "./pages/CreateReview";
 import CreateRestaurantPage from './pages/CreateRestaurant/CreateRestaurant';
 import HomePage from "./pages/HomePage";
 import Search from "./pages/Search/Search";
@@ -20,6 +21,7 @@ function App() {
                 <Route path='/sign-up' element={<SignUp />} />
                 <Route path='/congratulations' element={<Congratulations />} />
                 <Route path='/verification' element={<Verification />} />
+                 <Route path='/reviews' element={<CreateReview />} />
                 <Route path='/restaurants' element={<CreateRestaurantPage />} />
             </Routes>
         <Footer/>
