@@ -9,6 +9,7 @@ import CreateReview from "./pages/CreateReview";
 import CreateRestaurantPage from './pages/CreateRestaurant/CreateRestaurant';
 import HomePage from "./pages/HomePage";
 import Search from "./pages/Search/Search";
+import UserProfile from "./pages/UserProfile/UserProfile";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path='/verification' element={<Verification />} />
                  <Route path='/reviews' element={<CreateReview />} />
                 <Route path='/restaurants' element={<CreateRestaurantPage />} />
+                <Route path='/user' element={<UserProfile />} />
             </Routes>
         <Footer/>
     </div>
