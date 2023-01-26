@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useDispatch } from "react-redux";
-import { useSelector } from 'react-redux';
 import { setEmail } from '../../features/slice/authSlice';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { SignUpPage,SignUpRight, SignUpNav, SignUpForm } from "./SignUp.styled";
+import { SignUpPage, SignUpForm } from "./SignUp.styled";
 
 const SignUp = () => {
   const [newEmail, setNewEmail] = useState('');
   const [newWarning, setNewWarning] = useState('');
 
   const dispatch = useDispatch();
-  const auth = useSelector((state) => state.auth.data);
   const navigate = useNavigate();
 
   const handleChange = e => {
@@ -26,7 +24,7 @@ const SignUp = () => {
     const data = {
       email: newEmail,
     };
-    axios.post("https://motion.propulsion-home.ch/backend/api/auth/registration/", data).then(res => {
+    axios.post("https://luna-group2.propulsion-learn.ch/backend/api/registration/", data).then(res => {
       console.log(res);
       dispatch(setEmail(newEmail));
       navigate("/Congratulations");
@@ -35,12 +33,6 @@ const SignUp = () => {
       setNewWarning(error.message);
     });
   }
-
-  useEffect(() => {
-    if (auth) {
-      navigate("/Feed");
-    }
-  });
 
   return (
     <>
