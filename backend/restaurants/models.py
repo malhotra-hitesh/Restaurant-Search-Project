@@ -30,7 +30,7 @@ class Restaurant(models.Model):
     opening_hours = models.TextField()
     price = models.IntegerField(choices=PRICES, blank=True, null=True)
     image = models.ImageField(max_length=255, blank=True)
-    owner = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    owner = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='restaurants')
     # rating_average = models.IntegerField(blank=True, editable=False)
 
     # def save(self, *args, **kwargs):
