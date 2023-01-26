@@ -32,20 +32,15 @@ const SignIn = () => {
       email: newEmail,
       password: newPassword,
     };
-    axios.post("https://motion.propulsion-home.ch/backend/api/auth/token/", data).then(res => {
+    axios.post("https://luna-group2.propulsion-learn.ch/backend/api/auth/token/", data).then(res => {
       setNewWarning("");
       const authData = {
         email: newEmail,
         access: res.data.access,
-        username: res.data.user.username,
-        first_name: res.data.user.first_name,
-        last_name: res.data.user.last_name,
+
       }
       localStorage.setItem('access', authData.access);
-      localStorage.setItem('username', authData.username);
       localStorage.setItem('email', authData.email);
-      localStorage.setItem('first_name', authData.first_name);
-      localStorage.setItem('last_name', authData.last_name);
       dispatch(setAuth(authData));
     }).catch(error => {
       setNewWarning(error.message);
@@ -60,9 +55,7 @@ const SignIn = () => {
     const authData = {
       email: localStorage.getItem('email'),
       access: localStorage.getItem('access'),
-      username: localStorage.getItem('username'),
-      first_name: localStorage.getItem('first_name'),
-      last_name: localStorage.getItem('last_name'),
+
     };
     if(authData.access) {
       dispatch(setAuth(authData));
