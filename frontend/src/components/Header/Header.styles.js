@@ -5,7 +5,7 @@ export const MainHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 71px;
+  height: 60px;
   padding-inline: 2rem;
   background-color: #FFFFFF;
   position: relative;

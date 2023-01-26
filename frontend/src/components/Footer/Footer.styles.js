@@ -61,7 +61,7 @@ img:hover {
 
 export const MainFooter = styled.div`
   flex-direction: column;  
-  height: 90px;
+  height: 80px;
   display: flex;
 
 
