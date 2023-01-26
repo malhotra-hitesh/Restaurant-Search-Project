@@ -1,20 +1,25 @@
-import React  from "react";
 import { Route, Routes } from 'react-router-dom';
+import SignUp from './pages/Sign-up/SignUp';
+import Congratulations from './pages/Congratulations/Congratulations';
+import Verification from './pages/Verification/Verification';
+import SignIn from './pages/Sign-in/SignIn';
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import CreateReview from "./pages/CreateReview";
-
 
 function App() {
   return (
-    <>
-        <Header />
-       <Routes>
-        <Route path="/review" element={<CreateReview />}/>
+    <div className="App">
 
+    <Header/>
+       <Routes>
+        <Route path='/' element={<SignIn />} />
+        <Route path='/sign-up' element={<SignUp />} />
+        <Route path='/congratulations' element={<Congratulations />} />
+        <Route path='/verification' element={<Verification />} />
       </Routes>
-      <Footer />
-    </>
+<Footer/>
+
+    </div>
   );
 }
 

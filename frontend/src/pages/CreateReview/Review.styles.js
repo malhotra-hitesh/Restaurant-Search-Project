@@ -1,13 +1,11 @@
 import styled from 'styled-components';
-import reviewpageimage from "../../assets/reviewpageimage.png"
 
 export const ReviewHeader=styled.div`
 .main-image{
-  background-image:${reviewpageimage};
+  
   width: 100%;
   height: 40%;
   display: flex;
-  align-items: center;
   padding: 30px;
   background-repeat: no-repeat;
   background-size: cover;
