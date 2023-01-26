@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from rest_framework.generics import ListAPIView
-from rest_framework.permissions import IsAuthenticated
 
 from Users.serializers import UserSerializer
 from restaurants.models import Restaurant
@@ -18,7 +17,7 @@ class SearchView(ListAPIView):
     Search for ‘restaurants’, ‘reviews’ or ‘users’. {type: ‘restaurants’, ‘search_string’: ‘Pub’}.
     """
 
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_serializer_class(self):
         type = self.request.GET.get('type', '')
@@ -57,7 +56,6 @@ class HomeView(ListAPIView):
     """
 
     serializer_class = RestaurantSerializer
-    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         # queryset = Restaurant.objects.order_by('-rating_average')[:4]
