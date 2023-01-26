@@ -6,8 +6,8 @@ export const FooterUp = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ebebeb;
-  width: 1440px;
-  height: 56px;
+  width:100%;
+  height:100%;
 
 `;
 

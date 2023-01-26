@@ -4,8 +4,8 @@ export const MainHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  Width: 1440px;
-  Height: 71px;
+  Width: 100%;
+  Height: 100%;
   padding-inline: 2rem;
   background-color: #FFFFFF;
   position: relative;

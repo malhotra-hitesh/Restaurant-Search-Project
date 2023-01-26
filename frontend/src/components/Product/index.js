@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
-import{productContainer} from "./product.styles";
+import{Restaurant_cart} from "./product.styles";
 
-const index = props => {
+const Product = props => {
   return (
-    <productContainer>
-      <h2>{props.id}</h2>
-      <p>{props.image}</p>
-      <Link to={`/Search/${props.id}`}>See Details</Link>
-    </productContainer>
+    <Restaurant_cart>
+      <div>
+          <h2>{props.id}</h2>
+          <h2>{props.name}</h2>
+    </div>
+    </Restaurant_cart>
   );
 };
-export default index;
+export default Product;
 
