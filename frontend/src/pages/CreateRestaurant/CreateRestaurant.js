@@ -1,19 +1,20 @@
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+
 import { Page, CreateRestaurant, Fields, FormField, Line } from "./CreateRestaurant.styles";
 import axios from 'axios';
 import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux";
 
 const CreateRestaurantPage = () => {
-
+    const auth = useSelector((state) => state.auth.data);
+    console.log(auth)
+    
     const [formData, setFormData] = useState({
         name: '',
+        category: '',
         country: '',
-        address: '',
         street: '',
         city: '',
         zip: '',
-        contact: '',
         website: '',
         phone: '',
         email: '',
@@ -24,10 +25,16 @@ const CreateRestaurantPage = () => {
     const handleChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
+    const config ={
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${auth.access}`
+        }
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
-        axios.post("https://luna-group2.propulsion-learn.ch/api/restaurants/new/", formData)
+        axios.post("https://luna-group2.propulsion-learn.ch/backend/api/restaurants/new/", formData, config)
             .then(response => {
                 console.log(response);
             })
@@ -37,30 +44,28 @@ const CreateRestaurantPage = () => {
     }
 
 
-
-
-
+    
 
     return (
         <Page>
-            {/* //     <Header /> */}
+            
             <CreateRestaurant>
-                <p>CREATE NEW RESTAURANT</p>
-                <form>
+                <h2>CREATE NEW RESTAURANT</h2>
+                <form onSubmit={handleSubmit}>
                     <Line>
                         <p>Basic</p>
                         <Fields>
                             <FormField>
                                 <label for=''>Name *</label>
-                                <input id='' name='' value='{formData.name}' />
+                                <input id='' name='name' value={formData.name} onChange={handleChange} required/>
                             </FormField>
                             <FormField>
                                 <label for=''>Category *</label>
-                                <input id='' name='' value='{formData.category}' />
+                                <input id='' name='category' value={formData.category} onChange={handleChange} required />
                             </FormField>
                             <FormField>
                                 <label for=''>Country *</label>
-                                <input id='' name='' value='{formData.country}' />
+                                <input id='' name='country' value={formData.country} onChange={handleChange} required/>
                             </FormField>
                         </Fields>
                     </Line>
@@ -69,15 +74,15 @@ const CreateRestaurantPage = () => {
                         <Fields>
                             <FormField>
                                 <label for=''>Street *</label>
-                                <input id='' name='' value='{formData.street}' />
+                                <input id='' name='street' value={formData.street} onChange={handleChange} required/>
                             </FormField>
                             <FormField>
                                 <label for=''>City *</label>
-                                <input id='' name='' value='{formData.city}' />
+                                <input id='' name='city' value={formData.city} onChange={handleChange} required/>
                             </FormField>
                             <FormField>
                                 <label for=''>Zip</label>
-                                <input id='' name='' value='{formData.zip}' />
+                                <input id='' name='zip' value={formData.zip} onChange={handleChange}/>
                             </FormField>
                         </Fields>
                     </Line>
@@ -86,15 +91,15 @@ const CreateRestaurantPage = () => {
                         <Fields>
                             <FormField>
                                 <label for=''>Website</label>
-                                <input id='' name='' value='{formData.website}' />
+                                <input id='' name='website' value={formData.website} onChange={handleChange} />
                             </FormField>
                             <FormField>
                                 <label for=''>Phone *</label>
-                                <input id='' name='' value='{formData.phone}' />
+                                <input id='' name='phone' value={formData.phone} onChange={handleChange} required/>
                             </FormField>
                             <FormField>
                                 <label for=''>Email</label>
-                                <input id='' name='' value='{formData.email}' />
+                                <input id='' name='email' value={formData.email} onChange={handleChange}/>
                             </FormField>
                         </Fields>
 
@@ -104,22 +109,23 @@ const CreateRestaurantPage = () => {
                         <Fields>
                             <FormField>
                                 <label for=''>Opening hours *</label>
-                                <input id='' name='' value='{formData.opening_hours}' />
+                                <input id='' name='opening_hours' value={formData.opening_hours} onChange={handleChange} required/>
                             </FormField>
                             <FormField>
                                 <label for=''>Price level</label>
-                                <input id='' name='' value='{formData.price_level}' />
+                                <input id='' name='price_level' value={formData.price_level} onChange={handleChange}/>
                             </FormField>
                             <FormField>
                                 <label for=''>Image</label>
-                                {/* <StandardButton btnwidth={'70%'} text={'CHOOSE A FILE'}/> */}
+                                
                             </FormField>
                         </Fields>
                     </Line>
+                    <button type="submit">Create</button>
                 </form>
-                {/* <StandardButton text={'CREATE'} btnwidth={'10%'} className='SearchButton'/> */}
+                {/* <button type="submit">Create</button> */}
             </CreateRestaurant>
-            {/* //     <Footer /> */}
+            
         </Page>
     )
 }

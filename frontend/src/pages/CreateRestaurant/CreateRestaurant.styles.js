@@ -17,6 +17,20 @@ align-items: center;
 background-color: #F2F2F2;
 overflow-y: auto;
 
+h2 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #4c4c4c;
+    margin-top: 50px;
+    
+  }
+
+
+
 >p {
     font-size: xx-large;
     font-weight: 600;
@@ -24,6 +38,26 @@ overflow-y: auto;
     border-bottom: 5px solid #E47D31;;
     padding: 2% 10px 10px;
 }
+
+button {
+    width: 288px;
+    height:60px;
+    background:#E47D31;
+    border-radius: 28px;
+    font-size: 20px;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    position: relative;
+    top:60px;
+    left:120px;
+  }
+
+  form {
+    position: relative;
+    top: 60px;
+  }
 
 `;
 

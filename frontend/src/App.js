@@ -14,12 +14,13 @@ function App() {
     <div className="App">
 
     <Header/>
-        <CreateRestaurantPage />
+        {/* <CreateRestaurantPage /> */}
        <Routes>
         <Route path='/' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/congratulations' element={<Congratulations />} />
         <Route path='/verification' element={<Verification />} />
+        <Route path='/restaurants/new' element={<CreateRestaurantPage />} />
       </Routes>
 <Footer/>
 
