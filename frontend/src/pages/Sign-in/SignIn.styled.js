@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 export const SignInPage = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-   justify-content: center;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+height: 98vh;
+width: 100vw;
 `
 
 export const SignInForm = styled.div`
