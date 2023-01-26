@@ -1,27 +1,50 @@
 import React, {useEffect, useState} from 'react';
 import Restaurant from "../../components/Restaurant/Restaurant.jsx";
 import {SearchGlobaltyle, StyledButtons, StyledRestaurants} from "./Search.styled";
+import axios from "axios";
+import {setAuth} from "../../features/slice/authSlice";
 
 const Search = () => {
     const [formData, setFormData] = useState({
         search: "",
         category: "",
-        type: ''
+        type: 'restaurants'
     });
-    console.log(formData)
+    const [newWarning, setNewWarning] = useState('');
+    const [searchedData, setSearchedRestaurants] = useState([])
+    // console.log(formData)
+
+    const handleGetSearch = async() => {
+        try {
+            setSearchedRestaurants([]);
+            const res = await axios.get("https://luna-group2.propulsion-learn.ch/backend/api/search/", {params: formData});
+            setSearchedRestaurants(res.data);
+            // console.log("restaurants =", restaurants);
+        }
+        catch(e) {
+            setNewWarning(e.message);
+            }
+    }
+
+    useEffect(()=>{
+        handleGetSearch()
+        },[formData])
 
     const handleClick = e => {
         setFormData(prevState => {
             return {...prevState,
                     [e.target.name]: e.target.value}
         })
+        handleGetSearch();
     };
 
-        const handleChange = e => {
+    const handleChange = e => {
         setFormData(prevState => {
             return {...prevState,
                     [e.target.name]: e.target.value}
         })
+
+        // handleGetSearch();
     };
 
     const categories = [
@@ -50,68 +73,7 @@ const Search = () => {
         value: "6",
       },
     ];
-    const restaurants = [
-        {
-            id: 1,
-            name: "El Racó de l'Havana",
-            street: 'Carrer del Prat, 260',
-            zip: '08301',
-            city: 'Mataró',
-            image: '',
-            rating_average: 3.4,
-            reviews: [1,2,3,4]
-        },
-        {
-            id: 2,
-            name: "El Racó de l'Havana",
-            street: 'Carrer del Prat, 260',
-            zip: '08301',
-            city: 'Mataró',
-            image: '',
-            rating_average: 3.4,
-            reviews: [1,2,3,4]
-        },
-        {
-            id: 1,
-            name: "El Racó de l'Havana",
-            street: 'Carrer del Prat, 260',
-            zip: '08301',
-            city: 'Mataró',
-            image: '',
-            rating_average: 3.4,
-            reviews: [1,2,3,4]
-        },
-        {
-            id: 2,
-            name: "El Racó de l'Havana",
-            street: 'Carrer del Prat, 260',
-            zip: '08301',
-            city: 'Mataró',
-            image: '',
-            rating_average: 3.4,
-            reviews: [1,2,3,4]
-        },
-        {
-            id: 1,
-            name: "El Racó de l'Havana",
-            street: 'Carrer del Prat, 260',
-            zip: '08301',
-            city: 'Mataró',
-            image: '',
-            rating_average: 3.4,
-            reviews: [1,2,3,4]
-        },
-        {
-            id: 2,
-            name: "El Racó de l'Havana",
-            street: 'Carrer del Prat, 260',
-            zip: '08301',
-            city: 'Mataró',
-            image: '',
-            rating_average: 3.4,
-            reviews: [1,2,3,4]
-        },
-    ]
+
 
     return (
         <SearchGlobaltyle>
@@ -145,15 +107,18 @@ const Search = () => {
                         onClick={handleClick}> USERS </button>
             </StyledButtons>
 
+            {formData.type === 'restaurants' ?
+                        <StyledRestaurants>
+                            {searchedData.length===0 ?  null : searchedData.map((restaurant) => {
+                                return (
+                                    <Restaurant key={restaurant.id} restaurant={restaurant}/>
+                                    )
+                                })
+                            }
+                        </StyledRestaurants> : null }
+            {formData.type === 'reviews' ? <div>Reviews </div> : null }
+            {formData.type === 'users' ? <div>Users </div> : null }
 
-            <StyledRestaurants>
-                {restaurants.map((restaurant) => {
-                    return (
-                        <Restaurant key={restaurant.id} restaurant={restaurant}/>
-                    )
-                })
-                }
-            </StyledRestaurants>
     </SearchGlobaltyle>
     )
 }
