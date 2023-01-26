@@ -1,12 +1,12 @@
 
 import { Page, CreateRestaurant, Fields, FormField, Line } from "./CreateRestaurant.styles";
 import axios from 'axios';
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useSelector } from "react-redux";
 
 const CreateRestaurantPage = () => {
-    const auth = useSelector((state) => state.auth.data);
-    console.log(auth)
+    const auth = useSelector((state) => state.auth);
+    console.log(auth);
     
     const [formData, setFormData] = useState({
         name: '',
@@ -26,11 +26,11 @@ const CreateRestaurantPage = () => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
     }
     const config ={
-        method: "POST",
+        method: 'POST',
         headers: {
             Authorization: `Bearer ${auth.access}`
         }
-    }
+    };
 
     const handleSubmit = event => {
         event.preventDefault();

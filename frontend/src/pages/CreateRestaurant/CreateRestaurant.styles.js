@@ -50,7 +50,7 @@ button {
     padding: 15px 25px;
     cursor: pointer;
     position: relative;
-    top:60px;
+    top: 30px;
     left:120px;
   }
 

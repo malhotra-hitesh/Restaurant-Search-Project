@@ -13,16 +13,17 @@ function App() {
   return (
     <div className="App">
 
-    <Header/>
-        {/* <CreateRestaurantPage /> */}
-       <Routes>
+      <Header />
+      
+      
+      <Routes>
         <Route path='/' element={<SignIn />} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/congratulations' element={<Congratulations />} />
         <Route path='/verification' element={<Verification />} />
         <Route path='/restaurants/new' element={<CreateRestaurantPage />} />
       </Routes>
-<Footer/>
+      <Footer />
 
     </div>
   );
