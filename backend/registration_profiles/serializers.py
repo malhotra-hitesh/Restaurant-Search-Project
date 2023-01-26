@@ -27,4 +27,4 @@ class ValidationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['email', 'username', 'first_name', "last_name", "password", "password_repeat", "code"]
+        fields = ['email', 'username', 'location', "password", "password_repeat", "code"]

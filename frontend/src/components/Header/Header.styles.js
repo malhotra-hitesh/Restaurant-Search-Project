@@ -4,12 +4,12 @@ export const MainHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  Width: 100%;
-  Height: 100%;
+  width: 100%;
+  height: 71px;
   padding-inline: 2rem;
   background-color: #FFFFFF;
   position: relative;
-  padding: 0 2.5rem;
+  padding: 0 0;
   
 
   h1 {
