@@ -16,5 +16,6 @@ class UserSerializer(serializers.ModelSerializer):
                   'date_joined',
                   'profile_picture',
                   'reviews',
-                  'restaurants'
+                  'restaurants',
+                  'things_I_like'
                   ]
