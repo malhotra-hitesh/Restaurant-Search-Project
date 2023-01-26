@@ -14,7 +14,7 @@ class ListRestaurantView(ListAPIView):
     """
 
     serializer_class = RestaurantSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         query = self.request.GET.get('search', '')  # search is the params and '' the default value
@@ -43,7 +43,7 @@ class ListCategoryRestaurantView(ListAPIView):
     """
 
     serializer_class = RestaurantSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         query = self.request.parser_context.get('kwargs').get('category_id')
@@ -58,7 +58,7 @@ class ListUserRestaurantView(ListAPIView):
     """
 
     serializer_class = RestaurantSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user_id = self.request.parser_context.get('kwargs').get('user_id')

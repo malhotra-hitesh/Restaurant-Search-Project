@@ -13,7 +13,7 @@ class ListUserView(ListAPIView):
     Lists all users.
     """
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         query = self.request.GET.get('search', '')  # search is the params and '' the default value
@@ -51,4 +51,4 @@ class RetrieveUserView(RetrieveAPIView):
     lookup_url_kwarg = 'user_id'
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
