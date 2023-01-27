@@ -14,6 +14,8 @@ class UserSerializer(serializers.ModelSerializer):
                   'phone',
                   'description',
                   'date_joined',
-                  'profile_picture'
-
+                  'profile_picture',
+                  'reviews',
+                  'restaurants',
+                  'things_I_love'
                   ]

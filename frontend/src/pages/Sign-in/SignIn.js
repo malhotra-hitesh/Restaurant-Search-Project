@@ -49,7 +49,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if(auth) {
-      navigate("/restaurant");
+      navigate("/");
       return;
     }
     const authData = {
