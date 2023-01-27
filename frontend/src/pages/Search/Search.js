@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Restaurant from "../../components/Restaurant/Restaurant.jsx";
-import {SearchGlobaltyle, StyledButtons, StyledRestaurants} from "./Search.styled";
+import {SearchGlobaltyle, StyledButtons, StyledRestaurants, StyledReview} from "./Search.styled";
 import axios from "axios";
 import {setAuth} from "../../features/slice/authSlice";
 import Review from "../../components/Review/index.js";
@@ -119,14 +119,14 @@ const Search = () => {
                                 })
                             }
                         </StyledRestaurants> : null }
-            {formData.type === 'reviews' ? <div>
+            {formData.type === 'reviews' ? <StyledReview>
                                                 {searchedData.length===0 ?  null : searchedData.map((review) => {
                                                     return (
                                                         <Review key={review.id} review={review}/>
                                                         )
                                                     })
                                                 }
-                                           </div> : null }
+                                           </StyledReview> : null }
             {formData.type === 'users' ? <StyledRestaurants>
                                                 {searchedData.length===0 ?  null : searchedData.map((user) => {
                                                     return (

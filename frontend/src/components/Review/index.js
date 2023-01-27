@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {setEmail} from "../../features/slice/authSlice";
 import "./Review.css";
+import {Infos, ReviewCard, UserCard, Revieww, RestaurantName, Content, LikeComment} from "./Review.styled";
 
 
 const Review = (props) => {
@@ -42,41 +43,37 @@ const Review = (props) => {
 
     return (
         <>
-        {userData && (<div className="ReviewCard">
-            <div className="UserCard">
-                <div className="UserImageclick">
+        {userData && (<ReviewCard>
+            <UserCard>
                     {userData.profile_picture ? <img src={userData.profile_picture}/>: <div className="user-initial">{userData.first_name[0]}</div> }
-                </div>
-                <div className="Infos">
-                    <p className="Usernameclick">{userData.first_name} {userData.last_name}</p>
+
+                <Infos>
+                    {/* <NameUser> */}
+                    <h2 className="Usernameclick">{userData.first_name} {userData.last_name}</h2>
+                    {/* </NameUser> */}
+                    {/* <NumbersReview> */}
                     <p className="clickable">{userData.reviews.length} reviews in total</p>
-                </div>
-            </div>
-            <div className="Review">
+                    {/* </NumbersReview> */}
+                </Infos>
+            </UserCard>
+            <Revieww>
+                <RestaurantName>
                 <p className="RestaurantNameClick">{restaurantData.name}</p>
+                </RestaurantName>
+                <Content>
                 <p>{props.review.content}</p>
-                <div className="LikeComment">
+                </Content>
+                <LikeComment>
                     <button>Like {props.review.liked_by.length}</button>
                     <div className="Placeholder"></div>
                     <button>Comment</button>
-                </div>
-            </div>
-            <div className="Comments">
-                <p className="LatestComments">Latest comments</p> {/*We don't have comments... You can remove this part or hardcode it, as you want :)*/}
-                <div className="UserPageComment">
-                    <div className='dateReviewNumber'>
-                        <p>{props.date}</p>
-                    </div>
-                    <p>{props.content}</p>
-                </div>
-            </div>
-        </div> ) }
+                </LikeComment>
+            </Revieww>
+        </ReviewCard> ) }
         </>
     )
 
-    // return(
-    //     <div> Review</div>
-    // )
+
 }
 
 export default Review;
