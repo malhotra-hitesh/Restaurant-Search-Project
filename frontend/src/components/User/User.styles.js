@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-export const UserDetailsStyle=styled.section`
-  
+export const UserDetailsStyle = styled.section`
   display: flex;
   flex-direction: column;
   margin-left: 10px;
@@ -11,35 +10,57 @@ export const UserDetailsStyle=styled.section`
   width: 270px;
   margin-bottom: 10px;
 
+
   .top-section {
     display: flex;
-    line-height: 1.6em;
-      
+    flex-direction: row;
+
     .user-profile-image {
       width: 80px;
       height: 80px;
       background-position: center;
       background-size: cover;
     }
-    
 
-  .middle-section {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
+    .name-detail {
+      display: flex;
+      flex-direction: column;
+      padding: 7px;
 
-
-    .description-text {
-      font-size: 12px;
-
+      .username {
+        color: orange;
+        font-size: 20px;
+      }
     }
 
-    span {
-      color: orange;
-      margin-left: 5px;
+
+    .middle-section {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+
+
+      .description-text {
+        font-size: 12px;
+
+      }
     }
 
-  }
+      .last-section {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+
+        .description-text {
+          font-size: 12px;
+        }
+
+        span {
+          color: orange;
+          margin-left: 5px;
+        }
+      }
+  
 
 
 `;
