@@ -49,7 +49,7 @@ export const HomeHeader = styled.div`
     width: 530px;
     height: 55px;
     background: #ffffff;
-    color: #ffffff;
+    //color: #ffffff;
     border-radius: 3px;
     border:white;
     padding: 1rem;

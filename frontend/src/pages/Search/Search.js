@@ -2,11 +2,12 @@ import React, {useEffect, useState} from 'react';
 import Restaurant from "../../components/Restaurant/Restaurant.jsx";
 import {SearchGlobaltyle, StyledButtons, StyledRestaurants} from "./Search.styled";
 import axios from "axios";
-import {setAuth} from "../../features/slice/authSlice";
+import {useSearchParams} from "react-router-dom";
 
 const Search = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
     const [formData, setFormData] = useState({
-        search: "",
+        search: searchParams.get("search"),
         category: "",
         type: 'restaurants'
     });
@@ -44,7 +45,6 @@ const Search = () => {
                     [e.target.name]: e.target.value}
         })
 
-        // handleGetSearch();
     };
 
     const categories = [
