@@ -2,24 +2,30 @@ import React, {useEffect, useState} from 'react';
 import Restaurant from "../../components/Restaurant/Restaurant.jsx";
 import {Category, SearchBar, SearchGlobaltyle, StyledButtons, StyledRestaurants} from "./Search.styled";
 import axios from "axios";
-import {useSearchParams} from "react-router-dom";
+import {createSearchParams, useNavigate, useSearchParams} from "react-router-dom";
 
 const Search = () => {
     const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
+    // const [params, setParams] = useState({
+    //     search: searchParams.get('search'),
+    // });
+
     const [formData, setFormData] = useState({
-        search: searchParams.get("search"),
+        search: searchParams.get('search'),
         category: "",
         type: 'restaurants'
     });
     const [newWarning, setNewWarning] = useState('');
     const [searchedData, setSearchedRestaurants] = useState([])
-    // console.log(formData)
+    console.log(formData)
 
     const handleGetSearch = async () => {
         try {
             setSearchedRestaurants([]);
             const res = await axios.get("https://luna-group2.propulsion-learn.ch/backend/api/search/", {params: formData});
             setSearchedRestaurants(res.data);
+            navigate("/search")
             // console.log("restaurants =", restaurants);
         } catch (e) {
             setNewWarning(e.message);
@@ -47,6 +53,11 @@ const Search = () => {
                 [e.target.name]: e.target.value
             }
         })
+        setSearchParams(e.target.value)
+        // navigate({
+        //   pathname: '/search/',
+        //   search: `?${createSearchParams(params)}`,
+        // })
 
     };
 
@@ -87,7 +98,7 @@ const Search = () => {
                         value={formData.search}
                         onChange={handleChange}
                         placeholder="Search"
-                        //name={"search"}
+                        name={"search"}
                     />
                  </div>
             <Category>
