@@ -11,6 +11,7 @@ const HomePage = () => {
         search: "",
     });
    const navigate = useNavigate();
+
     const [restaurants, setRestaurants] = useState([])
     const fetchProducts = async () => {
         try {
@@ -33,7 +34,7 @@ const HomePage = () => {
             return {...prevState,
                     [e.target.name]: e.target.value}
         })
-        // console.log("params", params)
+        console.log("params", params)
     };
 
     const handleSubmit = event => {

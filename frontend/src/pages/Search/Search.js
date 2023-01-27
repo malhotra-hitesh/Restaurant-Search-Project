@@ -5,10 +5,13 @@ import axios from "axios";
 import {setAuth} from "../../features/slice/authSlice";
 import Review from "../../components/Review/index.js";
 import User from "../../components/User/User";
+import {useSearchParams} from "react-router-dom";
 
 const Search = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
+
     const [formData, setFormData] = useState({
-        search: "",
+        search: searchParams.get("search"),
         category: "",
         type: 'restaurants'
     });
