@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from restaurants.models import Restaurant
 from reviews.models import Review
+from reviews.permissions import SafeMethod
 from reviews.serializers import ReviewSerializer
 
 User = get_user_model()
@@ -17,7 +18,7 @@ class ListReviewView(ListAPIView):
     """
 
     serializer_class = ReviewSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         query = self.request.GET.get('search', '')  # search is the params and '' the default value
@@ -63,7 +64,7 @@ class ListRestaurantReviewView(ListAPIView):
     """
 
     serializer_class = ReviewSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         restaurant_id = self.request.parser_context.get('kwargs').get('restaurant_id')
@@ -78,7 +79,7 @@ class ListUserReviewView(ListAPIView):
     """
 
     serializer_class = ReviewSerializer
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user_id = self.request.parser_context.get('kwargs').get('user_id')
@@ -107,7 +108,7 @@ class RetrieveUpdateDeleteReviewView(RetrieveUpdateDestroyAPIView):
     lookup_url_kwarg = 'review_id'
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated | SafeMethod]
 
 
 class ToggleReviewLikeView(GenericAPIView):
