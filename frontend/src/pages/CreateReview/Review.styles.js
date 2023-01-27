@@ -67,6 +67,19 @@ export const ReviewHeader=styled.div`
     text-decoration: none;
     padding: 10px;
   }
+  .stars-container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .button-star {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+    font-size: 16px;
+    
+  }
   
   
   

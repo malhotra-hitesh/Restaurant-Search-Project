@@ -3,9 +3,13 @@ import { Page, CreateRestaurant, Fields, FormField, Line, } from "./CreateRestau
 import axios from 'axios';
 import React, { useState } from "react"
 import { useSelector } from "react-redux";
+import {useNavigate} from "react-router-dom";
 
 const CreateRestaurantPage = () => {
+    const navigate = useNavigate();
     const access= localStorage.getItem("access");
+    const [errorMessage, setErrorMessage] = useState("");
+
 
     const config = {
         method: "POST",
@@ -25,25 +29,110 @@ const CreateRestaurantPage = () => {
         phone: '',
         email: '',
         opening_hours: '',
-        price_level: ''
+        price: '',
+        image: ''
     });
 
     const handleChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
+        console.log("formData =", formData)
     }
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        axios.post("https://luna-group2.propulsion-learn.ch/backend/api/restaurants/new/", formData, config)
+    const handleUploadImage = e => {
+      setFormData(prevValue => {
+        return {
+          ...prevValue,
+          [e.target.name]: e.target.files[0],
+        };
+      });
+      console.log("formData", formData)
+
+    }
+
+    const handleSubmit = e => {
+      e.preventDefault();
+
+      /* Data has to be sent as a FromData, so here we create the FormData */
+      const form = new FormData();
+
+      /* insert in formData all data of the post except images */
+      for (const key in formData) {
+        form.append(key, formData[key]);
+      };
+
+      // /* we treat images differently because FormData doesn't accept arrays.
+      // We have to append images one by one */
+      // for (let i = 0 ; i < uploadedImages.length ; i++) {
+      //   formData.append("images", uploadedImages[i]);
+      // }
+
+      console.log("form =", Object.fromEntries(form))
+
+      /*postNewPost is dispatched only if there is content in the formData */
+      if (form.has("name") && form.get("name").length>0) {
+        setErrorMessage("");
+
+        axios.post("https://luna-group2.propulsion-learn.ch/backend/api/restaurants/new/", form, config)
             .then(response => {
                 console.log(response);
+                /* if post request is successful, user is redirected to home */
+                if (response.status === 201) navigate("/");
             })
             .catch(error => {
                 console.log(error);
             });
+
+
+      }
+      else {
+        /* If formData has no content, errorMessage is stored (and later rendered) */
+        setErrorMessage("This field may not be blank.");
+        return null
+      }
+      console.log("form =", Object.fromEntries(form))
     }
 
+    const categories = [
+      {
+        label: "Fast food",
+        value: "1",
+      },
+      {
+        label: "Casual dining",
+        value: "2",
+      },
+      {
+        label: "Fast casual",
+        value: "3",
+      },
+      {
+        label: "Contemporary",
+        value: "4",
+      },
+      {
+        label: "Café",
+        value: "5",
+      },
+      {
+        label: "Pizzeria",
+        value: "6",
+      },
+    ];
 
+    const prices = [
+      {
+        label: "$",
+        value: "1",
+      },
+      {
+        label: "$$",
+        value: "2",
+      },
+      {
+        label: "$$$",
+        value: "3",
+      }
+    ];
     
 
     return (
@@ -60,8 +149,14 @@ const CreateRestaurantPage = () => {
                                 <input id='' name='name' value={formData.name} onChange={handleChange} required/>
                             </FormField>
                             <FormField>
-                                <label for=''>Category *</label>
-                                <input id='' name='category' value={formData.category} onChange={handleChange} required />
+                                <label htmlFor=''>Category *</label>
+                                <select onChange={handleChange}
+                                        name={'category'}>
+                                    <option value="" className={'select-option'} selected>Select a value...</option>
+                                    {categories.map((category) => (
+                                      <option value={category.value}>{category.label}</option>
+                                    ))}
+                                  </select>
                             </FormField>
                             <FormField>
                                 <label for=''>Country *</label>
@@ -113,11 +208,24 @@ const CreateRestaurantPage = () => {
                             </FormField>
                             <FormField>
                                 <label for=''>Price level</label>
-                                <input id='' name='price_level' value={formData.price_level} onChange={handleChange}/>
+                                {/*<input id='' name='price' value={formData.price} onChange={handleChange}/>*/}
+                                <select onChange={handleChange}
+                                        name={'price'}>
+                                    <option value="" className={'select-option'} selected>Select a value...</option>
+                                    {prices.map((price) => (
+                                      <option value={price.value}>{price.label}</option>
+                                    ))}
+                                  </select>
                             </FormField>
                             <FormField>
                                 <label for=''>Image</label>
-                                <button type="button">CHOOSE A FILE...</button>
+                                <label className={'image-input'} htmlFor="upload-image">CHOOSE A FILE...</label>
+                                <input type="file"
+                                        name="image"
+                                        id="upload-image"
+                                       style={{display:"none"}}
+                                        onChange={handleUploadImage}
+                                      />
                             </FormField>
                         </Fields>
                     </Line>

@@ -53,6 +53,24 @@ button {
     top: 30px;
     left:120px;
 }
+  
+  .image-input {
+    width: 288px;
+    height:60px;
+    background:#E47D31;
+    border-radius: 28px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    position: relative;
+    font-family: 'sans';
+    text-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 
 
@@ -83,40 +101,38 @@ gap: 15px;
 `;
 
 export const FormField = styled.div`
-width: 31%;
-display: flex;
-flex-direction: column;
+    width: 31%;
+    display: flex;
+    flex-direction: column;
+    
+    label, select {
+            font-weight: 600;
+            color: gray;
+            padding: 15px 0px;
+    }
+  
+    input {
+            height: 100%;
+            flex-grow: 1;
+            border-radius: 2px;
+            border: 1px solid lightgray;
+            padding: 15px;
+    }
 
-label {
-        font-weight: 600;
-        color: gray;
-        padding: 15px 0px;
-}
-
->input {
-        height: 100%;
-        flex-grow: 1;
-        border-radius: 2px;
-        border: 1px solid lightgray;
-        padding: 15px;
-}
-
-button {
-    width: 200px;
-    height: 40px;
-    background:#E47D31;
-    border-radius: 28px;
-    font-size: 12px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    right: 50px;
-    left: 50px;
-    bottom: 50px;
-   
-
-}
+    button {
+        width: 200px;
+        height: 40px;
+        background:#E47D31;
+        border-radius: 28px;
+        font-size: 12px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        right: 50px;
+        left: 50px;
+        bottom: 50px;
+    }
 
 `;
 

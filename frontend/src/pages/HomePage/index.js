@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import homeHeader from "../../assets/home-header.png"
-import {Best_Rated_restaurants, HomeHeader, Main_container, Product_Container} from "./HomePage.styles";
-import {Restaurant_cart} from "../../components/Product/product.styles";
+import {Best_Rated_restaurants, HomeHeader, Main_container} from "./HomePage.styles";
 import axios from "axios"
 import Restaurant from "../../components/Restaurant/Restaurant";
 import {SearchGlobaltyle, StyledButtons, StyledRestaurants} from "../Search/Search.styled";

@@ -9,7 +9,7 @@ import CreateReview from "./pages/CreateReview";
 import CreateRestaurantPage from './pages/CreateRestaurant/CreateRestaurant';
 import HomePage from "./pages/HomePage";
 import Search from "./pages/Search/Search";
-import UserSearch from "./pages/User-Search";
+import UserProfile from "./pages/UserProfile/UserProfile";
 
 function App() {
     return (
@@ -18,13 +18,13 @@ function App() {
             <Routes>
                 <Route path='/' element={<HomePage/>} />
                 <Route path='/search' element={<Search />} />
-                <Route path='search/users' element={<UserSearch />} />
                 <Route path='/sign-in' element={<SignIn />} />
                 <Route path='/sign-up' element={<SignUp />} />
                 <Route path='/congratulations' element={<Congratulations />} />
                 <Route path='/verification' element={<Verification />} />
                  <Route path='/reviews' element={<CreateReview />} />
                 <Route path='/restaurants' element={<CreateRestaurantPage />} />
+                <Route path='/user' element={<UserProfile />} />
             </Routes>
         <Footer/>
     </div>
