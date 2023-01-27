@@ -5,12 +5,54 @@ import {ReviewHeader} from "./Review.styles";
 import axios from "axios";
 import reviewpageimage from '../../assets/reviewpageimage.png'
 import {useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import FullStar from "../../assets/yellowstar.svg";
+import HalfStar from "../../assets/halfstar.png";
+import NoStar from "../../assets/nostar.svg";
 
 const CreateReviewPage = () => {
-    const auth = useSelector((state) => state);
-    console.log(auth)
-    /*const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc1MTcwNzI4LCJpYXQiOjE2NzQ3Mzg3MjgsImp0aSI6ImNmNGUyNmFkMzk1OTRmODY4NzA2NjZkMmMwYjNlZWM5IiwidXNlcl9pZCI6OX0.77LwspYW0Lf9G51dO2-kYBsR2LfWYJFHipIsoWxm1Fc'*/
-    const access= localStorage.getItem("access");
+    const access = localStorage.getItem("access");
+    const navigate = useNavigate();
+    const [rating, setRating] = useState(0);
+    const [stars, setStars] = useState([]);
+
+    const countStars = amount => {
+        const stars = []
+
+        // compute rating in number of stars
+        if (typeof amount === 'number') {
+            // console.log("amount stars =", amount)
+            const roundedAmount = Math.round(amount*10)/10
+            for (let i = roundedAmount; i >= 0; i--) {
+                if (i >= 0.75) stars.push(1);
+                else if (i >= 0.25) stars.push(0.5)
+            }
+        }
+        if (stars.length < 5) {
+            for (let i = stars.length; i<5; i++) {
+               stars.push(0)
+            }
+        }
+        return stars;
+    }
+
+    useEffect(() =>{
+        setStars(countStars(rating));
+    }, []);
+
+    const handleClick = (e, rating) => {
+        // console.log("rating =", rating);
+        // console.log("countstars =",countStars(rating));
+        setStars(countStars(rating));
+        // console.log("stars =", stars)
+        setFormData(prevState => {
+            return {
+                ...prevState,
+                rating: rating
+            }
+        });
+        // console.log("formData =", formData)
+    }
 
     const config = {
         method: "POST",
@@ -19,7 +61,8 @@ const CreateReviewPage = () => {
         },
     }
     const [formData, setFormData] = useState({
-        content:""
+        content: "",
+        rating: 0
     });
 
     const handleChange = e => {
@@ -29,13 +72,17 @@ const CreateReviewPage = () => {
                 [e.target.name]: e.target.value
             }
         });
+        // console.log("formData =", formData)
+
     }
 
     const handleSubmit=event=>{
         event.preventDefault();
-        axios.post('https://luna-group2.propulsion-learn.ch/backend/api/reviews/new/8/',formData,config)
+        axios.post('https://luna-group2.propulsion-learn.ch/backend/api/reviews/new/8/',formData, config)
             .then(response=>{
                 console.log(response);
+             /* if post request is successful, user is redirected to home */
+            if (response.status === 201) navigate("/");
             })
             .catch(error=>{
                 console.log(error);
@@ -59,26 +106,32 @@ const CreateReviewPage = () => {
                         <img src={star_empty} alt="star for the restaurant"/>
                         <p>68 reviews</p>
                     </div>
+
                 </div>
 
                 <div>
                     <section className="top-field">
-                        <button className="buttons-stars">
-                            <img src={star_empty} alt="empty star for the customers to fill"/>
-                        </button>
-                        <button className="buttons-stars">
-                            <img src={star_empty} alt="empty star for the customers to fill"/>
-                        </button>
-                        <button className="buttons-stars">
-                            <img src={star_empty} alt="empty star for the customers to fill"/>
-                        </button>
-                        <button className="buttons-stars">
-                            <img src={star_empty} alt="empty star for the customers to fill"/>
-                        </button>
-                        <button className="buttons-stars">
-                            <img src={star_empty} alt="empty star for the customers to fill"/>
-                        </button>
+                        <div className='stars-container'>
+                            {stars.map((star, index) => {
+                            return(
+                                <div>
+                                {star === 1 ? <button className={'button-star'}
+                                                      name={'rating'}
+                                                      value={index+1}
+                                                      onClick={e => handleClick(e, index+1)}> <img src={FullStar} />  </button>:
+                                                    star === 0.5 ? <button className={'button-star'}
+                                                                           name={'rating'}
+                                                                           value={index+1}
+                                                                           onClick={e => handleClick(e, index+1)}> <img src={HalfStar} /> </button>  :
+                                                    <button className={'button-star'}
+                                                            name={'rating'}
+                                                            value={index+1}
+                                                            onClick={e => handleClick(e, index+1)}> <img src={NoStar} /> </button>}
+                                </div>
+                            )
+                        })}
                         <p className="rating">Select your rating</p>
+                    </div>
                     </section>
                     <section className={"input-field-container"}>
                         <input className={"input-field"}

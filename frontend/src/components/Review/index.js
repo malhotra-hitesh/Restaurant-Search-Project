@@ -2,11 +2,44 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {setEmail} from "../../features/slice/authSlice";
 import "./Review.css";
-import { ReviewCard, UserCard, ImageClick, Infos, Revieww, RestaurantName, LikeComment, Content } from "./Review.styled";
-import Restaurant from "../Restaurant/Restaurant";
 
 
-const ReviewContainer = (props) => {
+const Review = (props) => {
+    const [newWarning, setNewWarning] = useState('');
+    const [userData, setUserData] = useState('')
+    const [restaurantData, setRestaurantData] = useState('')
+    const access= localStorage.getItem("access");
+    const config = {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${access}`,
+        },
+    }
+
+    const getUserAndRestaurantData = async(config) => {
+        try {
+            /*fetch author review*/
+            const resUser = await axios.get(`https://luna-group2.propulsion-learn.ch/backend/api/users/${props.review.author}/`, config);
+            console.log(resUser);
+            setUserData(resUser.data);
+            console.log('userData', userData)
+
+
+            /*fetsch restaurant which review is associated with*/
+            const resRestaruant = await axios.get(`https://luna-group2.propulsion-learn.ch/backend/api/restaurants/${props.review.restaurant}/`, config);
+            console.log(resRestaruant);
+            setRestaurantData(resRestaruant.data);
+            console.log('restaurantData', restaurantData)
+        }
+        catch(e) {
+            setNewWarning(e.message);
+        }
+    }
+
+    useEffect(()=>{
+        getUserAndRestaurantData(config);
+        },[])
+
     return (
         <>
         {userData && (<ReviewCard>
@@ -42,4 +75,4 @@ const ReviewContainer = (props) => {
 
 }
 
-export default ReviewContainer;
+export default Review;
