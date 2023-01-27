@@ -3,6 +3,7 @@ import Restaurant from "../../components/Restaurant/Restaurant.jsx";
 import {SearchGlobaltyle, StyledButtons, StyledRestaurants} from "./Search.styled";
 import axios from "axios";
 import {setAuth} from "../../features/slice/authSlice";
+import Review from "../../components/Review/index.js";
 
 const Search = () => {
     const [formData, setFormData] = useState({
@@ -11,14 +12,14 @@ const Search = () => {
         type: 'restaurants'
     });
     const [newWarning, setNewWarning] = useState('');
-    const [searchedData, setSearchedRestaurants] = useState([])
+    const [searchedData, setSearchedData] = useState([])
     // console.log(formData)
 
     const handleGetSearch = async() => {
         try {
-            setSearchedRestaurants([]);
+            setSearchedData([]);
             const res = await axios.get("https://luna-group2.propulsion-learn.ch/backend/api/search/", {params: formData});
-            setSearchedRestaurants(res.data);
+            setSearchedData(res.data);
             // console.log("restaurants =", restaurants);
         }
         catch(e) {
@@ -116,7 +117,14 @@ const Search = () => {
                                 })
                             }
                         </StyledRestaurants> : null }
-            {formData.type === 'reviews' ? <div>Reviews </div> : null }
+            {formData.type === 'reviews' ? <div>
+                                                {searchedData.length===0 ?  null : searchedData.map((review) => {
+                                                    return (
+                                                        <Review key={review.id} review={review}/>
+                                                        )
+                                                    })
+                                                }
+                                           </div> : null }
             {formData.type === 'users' ? <div>Users </div> : null }
 
     </SearchGlobaltyle>
