@@ -7,9 +7,6 @@ import {createSearchParams, useNavigate, useSearchParams} from "react-router-dom
 const Search = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
-    // const [params, setParams] = useState({
-    //     search: searchParams.get('search'),
-    // });
 
     const [formData, setFormData] = useState({
         search: searchParams.get('search'),
@@ -18,7 +15,6 @@ const Search = () => {
     });
     const [newWarning, setNewWarning] = useState('');
     const [searchedData, setSearchedRestaurants] = useState([])
-    console.log(formData)
 
     const handleGetSearch = async () => {
         try {
@@ -54,11 +50,6 @@ const Search = () => {
             }
         })
         setSearchParams(e.target.value)
-        // navigate({
-        //   pathname: '/search/',
-        //   search: `?${createSearchParams(params)}`,
-        // })
-
     };
 
     const categories = [

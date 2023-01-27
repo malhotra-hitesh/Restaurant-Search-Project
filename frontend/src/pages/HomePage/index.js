@@ -17,7 +17,7 @@ const HomePage = () => {
             const response = await axios.get('https://luna-group2.propulsion-learn.ch/backend/api/home/')
 
             setRestaurants(response.data)
-            console.log(response.data,'from the fetch')
+            // console.log(response.data,'from the fetch')
         } catch (error) {
             console.log(error)
         }
@@ -33,7 +33,7 @@ const HomePage = () => {
             return {...prevState,
                     [e.target.name]: e.target.value}
         })
-        console.log("params", params)
+        // console.log("params", params)
     };
 
     const handleSubmit = event => {
