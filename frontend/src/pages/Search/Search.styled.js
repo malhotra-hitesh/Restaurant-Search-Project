@@ -45,3 +45,13 @@ export const StyledRestaurants = styled.div`
     padding: 10px 50px 10px;
 `;
 
+export const StyledReview = styled.div`
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 10px;
+    background: #F2F2F2;
+    padding: 10px 50px 10px; */
+   
+`;
+
+   

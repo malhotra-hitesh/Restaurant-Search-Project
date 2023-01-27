@@ -1,39 +1,45 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
+import {setEmail} from "../../features/slice/authSlice";
+import "./Review.css";
+import { ReviewCard, UserCard, ImageClick, Infos, Revieww, RestaurantName, LikeComment, Content } from "./Review.styled";
+import Restaurant from "../Restaurant/Restaurant";
 
 
 const ReviewContainer = (props) => {
     return (
-        <div className="ReviewCard">
-            <div className="UserCard">
-                <div className="UserImageclick">
-                    <img src={require('...')} />
-                </div>
-                <div className="Infos">
-                    <p className="Usernameclick">{props.first_name} {props.last_name}</p>
-                    <p className="clickable">{props.num_of_reviews} reviews in total</p>
-                </div>
-            </div>
-            <div className="Review">
-                <p className="RestaurantNameClick">{props.restaurant_name}</p>
-                <p>{props.content}</p>
-                <div className="LikeComment">
-                    <button>Like</button>
+        <>
+        {userData && (<ReviewCard>
+            <UserCard>
+                    {userData.profile_picture ? <img src={userData.profile_picture}/>: <div className="user-initial">{userData.first_name[0]}</div> }
+
+                <Infos>
+                    {/* <NameUser> */}
+                    <h2 className="Usernameclick">{userData.first_name} {userData.last_name}</h2>
+                    {/* </NameUser> */}
+                    {/* <NumbersReview> */}
+                    <p className="clickable">{userData.reviews.length} reviews in total</p>
+                    {/* </NumbersReview> */}
+                </Infos>
+            </UserCard>
+            <Revieww>
+                <RestaurantName>
+                <p className="RestaurantNameClick">{restaurantData.name}</p>
+                </RestaurantName>
+                <Content>
+                <p>{props.review.content}</p>
+                </Content>
+                <LikeComment>
+                    <button>Like {props.review.liked_by.length}</button>
                     <div className="Placeholder"></div>
                     <button>Comment</button>
-                </div>
-            </div>
-            <div className="Comments">
-                <p className="LatestComments">Latest comments</p>
-                <div className="UserPageComment">
-                    <div className='dateReviewNumber'>
-                        <h2 className='commentcard'>Review {props.reviewNumber}</h2>
-                        <p>{props.date}</p>
-                    </div>
-                    <p>{props.content}</p>
-                </div>
-            </div>
-        </div>
+                </LikeComment>
+            </Revieww>
+        </ReviewCard> ) }
+        </>
     )
+
+
 }
 
 export default ReviewContainer;

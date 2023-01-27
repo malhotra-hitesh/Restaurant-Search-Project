@@ -26,6 +26,7 @@ h2 {
     text-align: center;
     color: #4c4c4c;
     margin-top: 50px;
+    border-bottom: 3px solid #E47D31;
     
   }
 
