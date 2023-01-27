@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import Restaurant from "../../components/Restaurant/Restaurant.jsx";
-import {SearchGlobaltyle, StyledButtons, StyledRestaurants} from "./Search.styled";
+import {Category, SearchBar, SearchGlobaltyle, StyledButtons, StyledRestaurants, StyledReview} from "./Search.styled";
 import axios from "axios";
 import {setAuth} from "../../features/slice/authSlice";
+import Review from "../../components/Review/index.js";
+import User from "../../components/User/User";
 
 const Search = () => {
     const [formData, setFormData] = useState({
@@ -11,15 +13,15 @@ const Search = () => {
         type: 'restaurants'
     });
     const [newWarning, setNewWarning] = useState('');
-    const [searchedData, setSearchedRestaurants] = useState([])
+    const [searchedData, setSearchedData] = useState([])
     // console.log(formData)
 
     const handleGetSearch = async() => {
         try {
-            setSearchedRestaurants([]);
+            setSearchedData([]);
             const res = await axios.get("https://luna-group2.propulsion-learn.ch/backend/api/search/", {params: formData});
-            setSearchedRestaurants(res.data);
-            // console.log("restaurants =", restaurants);
+            setSearchedData(res.data);
+            console.log("searchData =", searchedData);
         }
         catch(e) {
             setNewWarning(e.message);
@@ -43,6 +45,7 @@ const Search = () => {
             return {...prevState,
                     [e.target.name]: e.target.value}
         })
+        console.log("formData", formData)
 
         // handleGetSearch();
     };
@@ -77,13 +80,18 @@ const Search = () => {
 
     return (
         <SearchGlobaltyle>
-            <form>
+            <SearchBar>
+                <div className="SearchBar">
                 <input
                     type={"text"}
                     value={formData.search}
                     onChange={handleChange}
                     placeholder={"Search"}
-                    name={"search"}/>
+                    name={"search"}
+                />
+                </div>
+            <Category>
+                <div className="Category">
                 <select onChange={handleChange}
                         name={'category'}>
                     <option value="" selected>Select a category...</option>
@@ -91,7 +99,10 @@ const Search = () => {
                       <option value={category.value}>{category.label}</option>
                     ))}
                   </select>
-            </form>
+                </div>
+            </Category>
+            </SearchBar>
+
             <StyledButtons>
                 <button type="button"
                         value="restaurants"
@@ -116,8 +127,25 @@ const Search = () => {
                                 })
                             }
                         </StyledRestaurants> : null }
-            {formData.type === 'reviews' ? <div>Reviews </div> : null }
-            {formData.type === 'users' ? <div>Users </div> : null }
+            {formData.type === 'reviews' ? <StyledReview>
+                                                {searchedData.length===0 ?  null : searchedData.map((review) => {
+                                                    return (
+                                                        <Review key={review.id} review={review}/>
+                                                        )
+                                                    })
+                                                }
+                                           </StyledReview> : null }
+            {formData.type === 'users' ? <StyledRestaurants>
+                                                {searchedData.length===0 ?  null : searchedData.map((user) => {
+                                                    return (
+                                                        <User key={user.id} user={user}/>
+                                                        )
+                                                    })
+                                                }
+                                           </StyledRestaurants> : null }
+            {/*{formData.type === 'users' ? <div>*/}
+            {/*                                    Users*/}
+            {/*                               </div> : null }*/}
 
     </SearchGlobaltyle>
     )
