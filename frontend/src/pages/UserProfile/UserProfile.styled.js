@@ -120,3 +120,16 @@ export const Sara = styled.div`
 
 ;
 
+export const NotAuthorized = styled.div`
+display: flex;
+  width:100%;
+  height: 580px;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 700;
+  font-family: Roboto;
+  align-items: center;
+`;
+
+
+

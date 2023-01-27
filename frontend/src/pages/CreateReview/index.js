@@ -9,9 +9,12 @@ import {useNavigate} from "react-router-dom";
 import FullStar from "../../assets/yellowstar.svg";
 import HalfStar from "../../assets/halfstar.png";
 import NoStar from "../../assets/nostar.svg";
+import {NotAuthorized} from "../UserProfile/UserProfile.styled";
 
 const CreateReviewPage = () => {
     const access = localStorage.getItem("access");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     const navigate = useNavigate();
     const [rating, setRating] = useState(0);
     const [stars, setStars] = useState([]);
@@ -38,7 +41,9 @@ const CreateReviewPage = () => {
 
     useEffect(() =>{
         setStars(countStars(rating));
-    }, []);
+         if(access) setIsLoggedIn(true);
+        else setIsLoggedIn(false)
+    }, [access]);
 
     const handleClick = (e, rating) => {
         // console.log("rating =", rating);
@@ -91,6 +96,7 @@ const CreateReviewPage = () => {
 
     return (
         <>
+            {isLoggedIn ?
             <ReviewHeader>
                 <div className="main-image">
                     <img src={reviewpageimage} alt="main-image"/>
@@ -147,7 +153,7 @@ const CreateReviewPage = () => {
 
                 </div>
 
-            </ReviewHeader>
+            </ReviewHeader> : <NotAuthorized>You must login first</NotAuthorized>}
         </>
     )
 }

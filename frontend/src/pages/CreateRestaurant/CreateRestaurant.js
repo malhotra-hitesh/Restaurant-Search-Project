@@ -1,16 +1,24 @@
 
 import { Page, CreateRestaurant, Fields, FormField, Line, } from "./CreateRestaurant.styles";
 import axios from 'axios';
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useSelector } from "react-redux";
 import {useNavigate} from "react-router-dom";
+import {fetchUser} from "../../features/slice/userSlice";
+import {NotAuthorized} from "../UserProfile/UserProfile.styled";
 
 const CreateRestaurantPage = () => {
     const navigate = useNavigate();
     const access= localStorage.getItem("access");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
     const [errorMessage, setErrorMessage] = useState("");
 
+    useEffect(() => {
+        if(access) setIsLoggedIn(true);
+        else setIsLoggedIn(false)
 
+    },[access])
     const config = {
         method: "POST",
         headers: {
@@ -135,7 +143,8 @@ const CreateRestaurantPage = () => {
     ];
     
 
-    return (
+    return ( <>
+        {isLoggedIn ?
         <Page>
             
             <CreateRestaurant>
@@ -235,8 +244,8 @@ const CreateRestaurantPage = () => {
                 {/* <button type="submit">Create</button> */}
             </CreateRestaurant>
             
-        </Page>
-    )
+        </Page> : <NotAuthorized>You must login first</NotAuthorized>}
+  </>  )
 }
 
 export default CreateRestaurantPage
