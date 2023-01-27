@@ -4,23 +4,27 @@ import  edit from '../../assets/edit.svg';
 import React, {useEffect, useState} from 'react';
 import  comment from '../../assets/comment.svg';
 import  restaurant from '../../assets/restaurant.svg';
-import { UserProfileStyled, Nina, Sara, AboutProfile} from "./UserProfile.styled";
+import {UserProfileStyled, Nina, Sara, AboutProfile, NotAuthorized} from "./UserProfile.styled";
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUser } from '../../features/slice/userSlice'
 import {useNavigate} from "react-router-dom";
 
 
-const UserProfile = () => {
-const [data, setData] = useState({
+    const UserProfile = () => {
+    const [data, setData] = useState({
         type: 'reviews'
     });
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const authData = localStorage.getItem('access');
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const userData = useSelector(store => store.userProfile.userProfileSlice)
     useEffect(() => {
+        if(authData) setIsLoggedIn(true);
+        else setIsLoggedIn(false)
         dispatch(fetchUser())
 
-    },[])
+    },[authData])
        const handleClick = e => {
         setData(prevState => {
             return {...prevState,
@@ -30,9 +34,10 @@ const [data, setData] = useState({
     };
     const dataJoined = userData?.date_joined;
     let today = new Date(dataJoined)
-let date = today.getDate() + '-' + parseInt(today.getMonth() + 1) + '-' + today.getFullYear()
-console.log(date)
+    let date = today.getDate() + '-' + parseInt(today.getMonth() + 1) + '-' + today.getFullYear()
+
   return (<>
+      {isLoggedIn ?
     <UserProfileStyled>
 
     <Nina>
@@ -98,7 +103,7 @@ console.log(date)
         <p>{userData?.description}</p>
     </AboutProfile>
 
-      </UserProfileStyled>
+    </UserProfileStyled> : <NotAuthorized>You must login first</NotAuthorized>}
   </>)
 }
 
