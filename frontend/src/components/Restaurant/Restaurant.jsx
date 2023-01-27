@@ -11,7 +11,7 @@ const Restaurant = (props) => {
 
     // compute rating in number of stars
     if (typeof props.restaurant.rating_average === 'number') {
-        console.log("props.restaurant.rating_average =", props.restaurant.rating_average)
+        // console.log("props.restaurant.rating_average =", props.restaurant.rating_average)
         const roundedRatingAverage = Math.round(props.restaurant.rating_average*10)/10
         for (let i = roundedRatingAverage; i >= 0; i--) {
             if (i >= 0.75) stars.push(1);

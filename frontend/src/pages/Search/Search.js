@@ -2,23 +2,26 @@ import React, {useEffect, useState} from 'react';
 import Restaurant from "../../components/Restaurant/Restaurant.jsx";
 import {Category, SearchBar, SearchGlobaltyle, StyledButtons, StyledRestaurants} from "./Search.styled";
 import axios from "axios";
-import {setAuth} from "../../features/slice/authSlice";
+import {createSearchParams, useNavigate, useSearchParams} from "react-router-dom";
 
 const Search = () => {
+    const [searchParams, setSearchParams] = useSearchParams();
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
-        search: "",
+        search: searchParams.get('search'),
         category: "",
         type: 'restaurants'
     });
     const [newWarning, setNewWarning] = useState('');
     const [searchedData, setSearchedRestaurants] = useState([])
-    // console.log(formData)
 
     const handleGetSearch = async () => {
         try {
             setSearchedRestaurants([]);
             const res = await axios.get("https://luna-group2.propulsion-learn.ch/backend/api/search/", {params: formData});
             setSearchedRestaurants(res.data);
+            navigate("/search")
             // console.log("restaurants =", restaurants);
         } catch (e) {
             setNewWarning(e.message);
@@ -46,8 +49,7 @@ const Search = () => {
                 [e.target.name]: e.target.value
             }
         })
-
-        // handleGetSearch();
+        setSearchParams(e.target.value)
     };
 
     const categories = [
@@ -87,7 +89,7 @@ const Search = () => {
                         value={formData.search}
                         onChange={handleChange}
                         placeholder="Search"
-                        //name={"search"}
+                        name={"search"}
                     />
                  </div>
             <Category>
