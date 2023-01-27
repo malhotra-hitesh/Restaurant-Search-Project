@@ -119,14 +119,14 @@ const Search = () => {
                                 })
                             }
                         </StyledRestaurants> : null }
-            {formData.type === 'reviews' ? <div>
+            {formData.type === 'reviews' ? <StyledReview>
                                                 {searchedData.length===0 ?  null : searchedData.map((review) => {
                                                     return (
                                                         <Review key={review.id} review={review}/>
                                                         )
                                                     })
                                                 }
-                                           </div> : null }
+                                           </StyledReview> : null }
             {formData.type === 'users' ? <StyledRestaurants>
                                                 {searchedData.length===0 ?  null : searchedData.map((user) => {
                                                     return (

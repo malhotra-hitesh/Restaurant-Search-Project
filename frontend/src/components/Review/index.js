@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {setEmail} from "../../features/slice/authSlice";
 import "./Review.css";
+import {Infos, ReviewCard, UserCard, Revieww, RestaurantName, Content, LikeComment} from "./Review.styled";
 
 
 const Review = (props) => {
