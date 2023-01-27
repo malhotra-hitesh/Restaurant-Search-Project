@@ -127,14 +127,14 @@ const Search = () => {
                                                     })
                                                 }
                                            </div> : null }
-            {formData.type === 'users' ? <div>
+            {formData.type === 'users' ? <StyledRestaurants>
                                                 {searchedData.length===0 ?  null : searchedData.map((user) => {
                                                     return (
                                                         <User key={user.id} user={user}/>
                                                         )
                                                     })
                                                 }
-                                           </div> : null }
+                                           </StyledRestaurants> : null }
             {/*{formData.type === 'users' ? <div>*/}
             {/*                                    Users*/}
             {/*                               </div> : null }*/}

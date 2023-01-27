@@ -38,6 +38,22 @@ export const UserDetailsStyle=styled.section`
       color: orange;
       margin-left: 5px;
     }
+    
+    .user-initial-profile {
+      width: 270px;
+      font-size: 24px;
+        font-weight: 400;
+        width: 50px;
+        height: 50px;
+        background-color:rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        color: #fff;
+
+    }
+  }
 
   }
 
