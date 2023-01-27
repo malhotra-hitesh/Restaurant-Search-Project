@@ -68,7 +68,7 @@ export const MainFooter = styled.div`
   p {
     position: relative;
     top: 6px;
-    left: 20px;
+    padding-left: 40px;
     font-style: normal;
     font-weight: 400;
     font-size: 12px;

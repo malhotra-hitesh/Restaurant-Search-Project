@@ -12,19 +12,17 @@ const Header = () => {
   const authData = localStorage.getItem('access');
 
     useEffect(() => {
-      console.log("authData =", authData)
       if(authData) setIsLoggedIn(true);
       else setIsLoggedIn(false);
-      console.log("isLoggedIn =", isLoggedIn)
       }, [authData]);
 
     const handleLogout = () => {
-      console.log("Loging out...")
-      dispatch(clearAuth());
+
       localStorage.removeItem('access');
       localStorage.removeItem('email');
+      dispatch(clearAuth());
       setIsLoggedIn(false)
-      // navigate("/")
+      navigate("/sign-in")
     };
 
 
