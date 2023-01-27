@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Restaurant from "../../components/Restaurant/Restaurant.jsx";
-import {SearchGlobaltyle, StyledButtons, StyledRestaurants, StyledReview} from "./Search.styled";
+import {Category, SearchBar, SearchGlobaltyle, StyledButtons, StyledRestaurants, StyledReview} from "./Search.styled";
 import axios from "axios";
 import {setAuth} from "../../features/slice/authSlice";
 import Review from "../../components/Review/index.js";
@@ -80,13 +80,18 @@ const Search = () => {
 
     return (
         <SearchGlobaltyle>
-            <form>
+            <SearchBar>
+                <div className="SearchBar">
                 <input
                     type={"text"}
                     value={formData.search}
                     onChange={handleChange}
                     placeholder={"Search"}
-                    name={"search"}/>
+                    name={"search"}
+                />
+                </div>
+            <Category>
+                <div className="Category">
                 <select onChange={handleChange}
                         name={'category'}>
                     <option value="" selected>Select a category...</option>
@@ -94,7 +99,10 @@ const Search = () => {
                       <option value={category.value}>{category.label}</option>
                     ))}
                   </select>
-            </form>
+                </div>
+            </Category>
+            </SearchBar>
+
             <StyledButtons>
                 <button type="button"
                         value="restaurants"

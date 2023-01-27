@@ -3,7 +3,6 @@ export const SearchGlobaltyle = styled.div`
   background-color: #F2F2F2;
   width:1440px;
   height:100%
-  
   `
 export const SearchBar = styled.div`
   width: 1440px;
@@ -13,6 +12,7 @@ border-color: darkgray;
   
   .SearchBar {
     width:100%;
+  
     background: white;
     input {
       width: 100%;
@@ -32,7 +32,6 @@ export const Category = styled.div`
       border-color: darkgray;
     }
     }
-    
   
   `
 
@@ -68,7 +67,6 @@ export const StyledButtons = styled.div`
     border-bottom: #E47D31 solid 2px;
   }
 `
-
 export const StyledRestaurants = styled.div`
     display: grid;
     
@@ -80,11 +78,10 @@ export const StyledRestaurants = styled.div`
 
 export const StyledReview = styled.div`
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, 25%);
     gap: 10px;
     background: #F2F2F2;
-    padding: 10px 50px 10px; */
-   
+    padding: 10px 50px 10px;
 `;
 
    
