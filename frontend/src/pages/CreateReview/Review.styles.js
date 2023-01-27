@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const ReviewHeader=styled.div`
 .main-image{
-  
   width: 100%;
-  height: 40%;
+  height: 50%;
   display: flex;
-  padding: 30px;
+  padding: 0px;
   background-repeat: no-repeat;
   background-size: cover;
+  border: none ;
   
 }
   .top-field{
